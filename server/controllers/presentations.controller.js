@@ -8,15 +8,11 @@ module.exports = {
   deletePresentation
 };
 function showPresentations(req, res) {
-  const _id = req.params.presentationId;
-  Presentation.find({ _id }, (err, presentation) => {
+  Presentation.find({}, (err, presentations) => {
     if (err) {
-      res.status(404).send("An error");
+      res.status(404).send("Data was not found");
     }
-    if (presentation.length < 1) {
-      res.send("A student with that id was not found");
-    }
-    res.json(presentation);
+    res.json(presentations);
   });
 }
 
@@ -56,7 +52,6 @@ function editPresentation(req, res) {
     if (presentation.length < 1) {
       res.send("A student with that id was not found");
     }
-
     presentation.presenter = req.body.presenter;
     presentation.evaluator = req.body.evaluator;
     presentation.topic = req.body.topic;
@@ -68,7 +63,6 @@ function editPresentation(req, res) {
       if (err) {
         res.status(404).send(err);
       }
-      console.log("Saved");
       res.send("Presentation has been updated");
     });
   });
@@ -78,8 +72,9 @@ function deletePresentation(req, res) {
   const _id = req.params.presentationId;
   Presentation.findOneAndRemove({ _id }, (err, presentation) => {
     if (err) {
-      res.status(404).send("Unable to delete");
+      res.status(404).send(err);
     }
+    console.log("Saved");
     res.send(`Presentation with id ${_id} has been removed`);
   });
 }
