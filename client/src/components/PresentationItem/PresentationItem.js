@@ -22,7 +22,7 @@ const PresentationItem = ({
 
   const topicContent =
     variant === "item" ? (
-      <Link to={`/presentations/${_id}`}>{topic}</Link>
+      <Link to={"/presentations/" + _id}>{topic}</Link>
     ) : (
       topic
     );

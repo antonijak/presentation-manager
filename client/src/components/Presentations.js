@@ -1,5 +1,5 @@
 import React from "react";
-import PresentationItem from "./PresentationItem/PresentationContent";
+import PresentationItem from "./PresentationItem/PresentationItem";
 import "./Presentations.scss";
 
 const Presentations = props => {
@@ -8,6 +8,7 @@ const Presentations = props => {
       props.presentations.map((presentation, i) => {
         return (
           <PresentationItem
+            _id={presentation._id}
             presenter={presentation.presenter}
             evaluator={presentation.evaluator}
             topic={presentation.topic}

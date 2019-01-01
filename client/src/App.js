@@ -30,7 +30,7 @@ class App extends Component {
 
           <Route
             exact
-            path="/presentations/edit/:id"
+            path="/presentations/edit/:_id"
             component={WritePresentation}
           />
 
@@ -40,7 +40,11 @@ class App extends Component {
             component={WritePresentation}
           />
 
-          <Route exact path="/presentations/:id" component={ViewPresentation} />
+          <Route
+            exact
+            path="/presentations/:_id"
+            component={ViewPresentation}
+          />
 
           <Route
             exact
