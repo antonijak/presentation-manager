@@ -26,9 +26,8 @@ const Presentations = props => {
       </div>
     );
   return (
-    <div className="container mt-4">
-      <h2 className="mb-4">Presentations</h2>
-      <ul className="list-group">
+    <div className="container mt-5">
+      <ul className="list-group list-group-flush ">
         <PresentationItem
           presenter="Presenter"
           evaluator="Evaluator"

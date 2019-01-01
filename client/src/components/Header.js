@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-dark bg-dark navbar-expand-md">
+    <nav className="navbar navbar-dark bg-secondary navbar-expand-md">
       <Link to="/" className="navbar-brand">
-        Integrify students
+        Presentation Manager
       </Link>
       <button
         className="navbar-toggler"
