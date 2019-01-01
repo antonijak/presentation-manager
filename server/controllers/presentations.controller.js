@@ -22,7 +22,7 @@ function addPresentation(req, res) {
     evaluator: req.body.evaluator,
     topic: req.body.topic,
     article_url: req.body.article_url,
-    presentation_date: req.body.presentation_date,
+    date: req.body.date,
     keywords: req.body.keywords,
     summary: req.body.summary
   });
@@ -56,7 +56,7 @@ function editPresentation(req, res) {
     presentation.evaluator = req.body.evaluator;
     presentation.topic = req.body.topic;
     presentation.article_url = req.body.article_url;
-    presentation.presentation_date = req.body.presentation_date;
+    presentation.date = req.body.date;
     presentation.keywords = req.body.keywords;
     presentation.summary = req.body.summary;
     presentation.save(err => {

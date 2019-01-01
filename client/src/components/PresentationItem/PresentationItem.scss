@@ -1,0 +1,63 @@
+.bold-text {
+    font-weight: bold;
+}
+
+.presentation {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__item {
+        text-align: left;
+        padding: 0 .5rem;
+        // border: 1px solid black;
+
+        &--presenter {
+            width: 15%;
+            padding-left: 0;
+        }
+
+        &--evaluator {
+            width: 15%;
+        }
+
+        &--topic {
+            width: 29%;
+        }
+
+        &--date {
+            width: 10%;
+        }
+
+        &--article {
+            width: 15%;
+
+            .btn {
+                border: none;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+
+                .badge {
+                    margin-top: 2px;
+                }
+            }
+        }
+
+        &--buttons {
+            width: 15%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-right: 0;
+        }
+
+        &--modify {
+            width: 15%;
+        }
+
+    }
+   
+}

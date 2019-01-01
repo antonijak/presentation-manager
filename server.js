@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const path = require("path");
 
 const { MONGODB_URI } = require("./server/database/db");
 
@@ -20,11 +21,11 @@ mongoose.connect(
     console.log("Database is connected");
   }
 );
-
+app.use(express.static(path.join(__dirname, "/client/build")));
 app.use(bodyParser.json());
-app.use("/presentations", PresentationsRouter);
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
+app.use("/allpresentations", PresentationsRouter);
+app.get("*", (req, res) =>
+  res.sendFile(path.join(__dirname + "/client/public/index.html"))
+);
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));

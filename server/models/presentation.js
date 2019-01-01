@@ -13,9 +13,9 @@ const PresentationSchema = new Schema({
     type: String
   },
   article_url: {
-    type: String
+    type: Array
   },
-  presentation_date: {
+  date: {
     type: Date
   },
   keywords: {
