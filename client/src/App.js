@@ -43,7 +43,12 @@ class App extends Component {
           <Route
             exact
             path="/presentations/:_id"
-            component={ViewPresentation}
+            render={props => (
+              <ViewPresentation
+                {...props}
+                presentations={this.state.presentations}
+              />
+            )}
           />
 
           <Route

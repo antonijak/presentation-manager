@@ -12,7 +12,7 @@ const PresentationSchema = new Schema({
   topic: {
     type: String
   },
-  article_url: {
+  articles: {
     type: Array
   },
   date: {

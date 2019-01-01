@@ -1,6 +1,62 @@
 import React from "react";
-const ViewPresentation = () => {
-  return <div>View</div>;
+import Buttons from "./Buttons";
+import "./ViewPresentation.scss";
+
+const ViewPresentation = ({ presentations, match }) => {
+  const presentation = presentations.find(
+    presentation => presentation._id === match.params._id
+  );
+
+  return (
+    <div className="container presentation-view">
+      <h2 className="mt-4 mb-4 presentation-view__name">
+        {presentation.topic}
+      </h2>
+
+      <div className="row">
+        <div className="col-2">Presenter:</div>
+        <div className="col-10">{presentation.presenter}</div>
+      </div>
+
+      <div className="row">
+        <div className="col-2">Evaluator:</div>
+        <div className="col-10">{presentation.evaluator}</div>
+      </div>
+
+      <div className="row">
+        <div className="col-2">Date:</div>
+        <div className="col-10">{presentation.date.substring(0, 10)}</div>
+      </div>
+
+      <div className="row">
+        <div className="col-2">Summary:</div>
+        <div className="col-10">{presentation.summary}</div>
+      </div>
+
+      <div className="row">
+        <div className="col-2">Articles:</div>
+        <div className="col-10 row__articles">
+          {presentation.articles.map((article, i) => (
+            <a href={article} target="blank">
+              {article}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col-2">Keywords:</div>
+        <div className="col-10 row__keywords">
+          {presentation.keywords.map((keyword, i) => (
+            <span className="badge badge-pill badge-light view-keyword">
+              {keyword}
+            </span>
+          ))}
+        </div>
+      </div>
+      <Buttons className="presentation-view__buttons" />
+    </div>
+  );
 };
 
 export default ViewPresentation;

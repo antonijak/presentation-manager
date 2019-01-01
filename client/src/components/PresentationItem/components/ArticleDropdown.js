@@ -1,5 +1,5 @@
 import React from "react";
-const ArticleDropdown = ({ article }) => {
+const ArticleDropdown = ({ articles }) => {
   return (
     <div className="dropdown presentation__item presentation__item--article">
       <button
@@ -11,13 +11,13 @@ const ArticleDropdown = ({ article }) => {
         aria-expanded="false"
       >
         <span className="badge badge-secondary badge-pill">
-          {article.length}
+          {articles.length}
         </span>
         Articles
       </button>
 
       <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        {article.map((article, i) => (
+        {articles.map((article, i) => (
           <a
             className="dropdown-item"
             href={article}

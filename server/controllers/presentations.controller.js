@@ -21,7 +21,7 @@ function addPresentation(req, res) {
     presenter: req.body.presenter,
     evaluator: req.body.evaluator,
     topic: req.body.topic,
-    article_url: req.body.article_url,
+    articles: req.body.articles,
     date: req.body.date,
     keywords: req.body.keywords,
     summary: req.body.summary

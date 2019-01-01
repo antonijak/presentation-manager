@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./PresentationItem.scss";
 import classNames from "class-names";
 import ArticleDropdown from "./components/ArticleDropdown";
-import Buttons from "./components/Buttons";
+import Buttons from "../Buttons";
 import PresentationContent from "./components/PresentationContent";
 
 const PresentationItem = ({
@@ -12,7 +12,7 @@ const PresentationItem = ({
   _id,
   topic,
   date,
-  article,
+  articles,
   variant
 }) => {
   const listClass = classNames({
@@ -29,14 +29,17 @@ const PresentationItem = ({
 
   const articleCell =
     variant === "item" ? (
-      <ArticleDropdown article={article} />
+      <ArticleDropdown articles={articles} />
     ) : (
       <PresentationContent content="Article" name="article" />
     );
 
   const buttonsCell =
     variant === "item" ? (
-      <Buttons _id={_id} />
+      <Buttons
+        _id={_id}
+        className="presentation__item presentation__item--buttons"
+      />
     ) : (
       <PresentationContent content="Modify" name="modify" />
     );

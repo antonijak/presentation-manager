@@ -13,7 +13,7 @@ const Presentations = props => {
             evaluator={presentation.evaluator}
             topic={presentation.topic}
             date={presentation.date}
-            article={presentation.article_url}
+            articles={presentation.articles}
             variant="item"
             key={i + "-item"}
           />

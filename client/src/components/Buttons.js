@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Buttons = ({ _id }) => {
+const Buttons = ({ _id, className }) => {
   return (
-    <div className="presentation__item presentation__item--buttons">
+    <div className={className}>
       <Link
         to={`/presentations/edit/${_id}`}
         className="btn btn-primary edit"
