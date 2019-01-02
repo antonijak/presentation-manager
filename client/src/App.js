@@ -13,13 +13,66 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   state = {
-    presentations: []
+    presentations: [],
+    newPresentation: {
+      presenter: "",
+      evaluator: "",
+      topic: "",
+      articles: [
+        // this.state.tempArticles.article1,
+        // this.state.tempArticles.article2,
+        // this.state.tempArticles.article3
+      ],
+      date: "",
+      keywords: [],
+      summary: ""
+    },
+    tempArticles: {
+      article1: "",
+      article2: "",
+      article3: ""
+    }
   };
   componentDidMount = () => {
     axios.get("/allpresentations").then(res => {
       this.setState({ presentations: res.data });
     });
   };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    axios({
+      method: "post",
+      url: "/allpresentations",
+      data: this.state.newPresentation
+    });
+  };
+
+  handleChange = event => {
+    const fieldValue = event.target.value;
+    const fieldName = event.target.name;
+
+    if (
+      fieldName === "article1" ||
+      fieldName === "article2" ||
+      fieldName === "article3"
+    ) {
+      this.setState({
+        newPresentation: {
+          ...this.state.newPresentation,
+          articles: [...this.state.newPresentation.articles, fieldValue]
+        }
+      });
+    } else {
+      this.setState({
+        newPresentation: {
+          ...this.state.newPresentation,
+          [fieldName]: fieldValue
+        }
+      });
+    }
+  };
+
   render() {
     return (
       <div className="App container">
@@ -31,13 +84,20 @@ class App extends Component {
           <Route
             exact
             path="/presentations/edit/:_id"
-            component={WritePresentation}
+            render={props => <WritePresentation {...props} />}
           />
 
           <Route
             exact
             path="/presentations/add-new"
-            component={WritePresentation}
+            render={props => (
+              <WritePresentation
+                {...props}
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+                newPresentation={this.state.newPresentation}
+              />
+            )}
           />
 
           <Route

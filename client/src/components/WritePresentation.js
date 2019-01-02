@@ -1,11 +1,11 @@
 import React from "react";
 import "./WritePresentation.scss";
 
-const WritePresentation = () => {
+const WritePresentation = ({ newPresentation, handleSubmit, handleChange }) => {
   return (
     <div className="container mt-4">
       <h2>New Presentation</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-row">
           <div className="form-group col-md-4">
             <label htmlFor="form-presenter">Presenter*</label>
@@ -14,6 +14,9 @@ const WritePresentation = () => {
               className="form-control form__presenter"
               id="form-presenter"
               placeholder="Full Name"
+              value={newPresentation.presenter}
+              onChange={handleChange}
+              name="presenter"
             />
           </div>
 
@@ -24,6 +27,9 @@ const WritePresentation = () => {
               className="form-control form__evaluator"
               id="form-evaluator"
               placeholder="Full Name"
+              value={newPresentation.evaluator}
+              onChange={handleChange}
+              name="evaluator"
             />
           </div>
 
@@ -33,6 +39,9 @@ const WritePresentation = () => {
               type="date"
               className="form-control form__date"
               id="form-date"
+              value={newPresentation.date}
+              onChange={handleChange}
+              name="date"
             />
           </div>
         </div>
@@ -44,6 +53,9 @@ const WritePresentation = () => {
             className="form-control form__topic"
             id="form-topic"
             placeholder="Presentation Topic"
+            value={newPresentation.topic}
+            onChange={handleChange}
+            name="topic"
           />
         </div>
 
@@ -54,6 +66,9 @@ const WritePresentation = () => {
             className="form-control form__article"
             id="form-article1"
             placeholder="www.some-link.com"
+            value={newPresentation.article}
+            onBlur={handleChange}
+            name="article1"
           />
         </div>
 
@@ -64,6 +79,9 @@ const WritePresentation = () => {
             className="form-control form__article"
             id="form-article2"
             placeholder="www.some-link.com"
+            value={newPresentation.article2}
+            onBlur={handleChange}
+            name="article2"
           />
         </div>
 
@@ -74,6 +92,9 @@ const WritePresentation = () => {
             className="form-control form__article"
             id="form-article3"
             placeholder="www.some-link.com"
+            value={newPresentation.article3}
+            onBlur={handleChange}
+            name="article3"
           />
         </div>
 
@@ -83,6 +104,9 @@ const WritePresentation = () => {
             className="form-control form__summary"
             id="form-summary"
             rows="3"
+            value={newPresentation.summary}
+            onChange={handleChange}
+            name="summary"
           />
         </div>
 
@@ -93,10 +117,17 @@ const WritePresentation = () => {
             className="form-control form__keywords"
             id="form-keywords"
             placeholder="eg. learning, coding"
+            value={newPresentation.keywords}
+            onChange={handleChange}
+            name="keywords"
           />
         </div>
 
-        <button type="submit" className="btn btn-primary form__submit">
+        <button
+          type="submit"
+          className="btn btn-primary form__submit"
+          value="Submit"
+        >
           Submit
         </button>
       </form>
