@@ -55,7 +55,7 @@ function editPresentation(req, res) {
     presentation.presenter = req.body.presenter;
     presentation.evaluator = req.body.evaluator;
     presentation.topic = req.body.topic;
-    presentation.article_url = req.body.article_url;
+    presentation.articles = req.body.articles;
     presentation.date = req.body.date;
     presentation.keywords = req.body.keywords;
     presentation.summary = req.body.summary;
@@ -63,7 +63,7 @@ function editPresentation(req, res) {
       if (err) {
         res.status(404).send(err);
       }
-      res.send("Presentation has been updated");
+      res.send(presentation);
     });
   });
 }

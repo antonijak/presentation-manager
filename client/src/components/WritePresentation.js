@@ -1,14 +1,30 @@
 import React from "react";
 import "./WritePresentation.scss";
 
-const WritePresentation = ({ newPresentation, handleSubmit, handleChange }) => {
+const WritePresentation = ({
+  presentations,
+  newPresentation,
+  tempKeywords,
+  tempArticles,
+  handleSubmit,
+  handleChange,
+  match,
+  handleEdit,
+  history
+}) => {
   return (
     <div className="container mt-4">
       <h2>New Presentation</h2>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={
+          presentations
+            ? e => handleEdit(e, match.params._id, history)
+            : handleSubmit
+        }
+      >
         <div className="form-row">
           <div className="form-group col-md-4">
-            <label htmlFor="form-presenter">Presenter*</label>
+            <label htmlFor="form-presenter">Presenter</label>
             <input
               type="text"
               className="form-control form__presenter"
@@ -21,7 +37,7 @@ const WritePresentation = ({ newPresentation, handleSubmit, handleChange }) => {
           </div>
 
           <div className="form-group col-md-4">
-            <label htmlFor="form-evaluator">Evaluator*</label>
+            <label htmlFor="form-evaluator">Evaluator</label>
             <input
               type="text"
               className="form-control form__evaluator"
@@ -34,7 +50,7 @@ const WritePresentation = ({ newPresentation, handleSubmit, handleChange }) => {
           </div>
 
           <div className="form-group col-md-4">
-            <label htmlFor="form-date">Date*</label>
+            <label htmlFor="form-date">Date</label>
             <input
               type="date"
               className="form-control form__date"
@@ -47,7 +63,7 @@ const WritePresentation = ({ newPresentation, handleSubmit, handleChange }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="form-topic">Topic*</label>
+          <label htmlFor="form-topic">Topic</label>
           <input
             type="text"
             className="form-control form__topic"
@@ -60,46 +76,7 @@ const WritePresentation = ({ newPresentation, handleSubmit, handleChange }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="form-article1">Article 1*</label>
-          <input
-            type="url"
-            className="form-control form__article"
-            id="form-article1"
-            placeholder="www.some-link.com"
-            value={newPresentation.article}
-            onBlur={handleChange}
-            name="article1"
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="form-article2">Article 2</label>
-          <input
-            type="url"
-            className="form-control form__article"
-            id="form-article2"
-            placeholder="www.some-link.com"
-            value={newPresentation.article2}
-            onBlur={handleChange}
-            name="article2"
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="form-article3">Article 3</label>
-          <input
-            type="url"
-            className="form-control form__article"
-            id="form-article3"
-            placeholder="www.some-link.com"
-            value={newPresentation.article3}
-            onBlur={handleChange}
-            name="article3"
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="form-summary">Summary*</label>
+          <label htmlFor="form-summary">Summary</label>
           <textarea
             className="form-control form__summary"
             id="form-summary"
@@ -107,20 +84,57 @@ const WritePresentation = ({ newPresentation, handleSubmit, handleChange }) => {
             value={newPresentation.summary}
             onChange={handleChange}
             name="summary"
+            placeholder="Short description of the topic."
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="form-keywords">Keywords</label>
+          <label htmlFor="form-articles">
+            Articles (one or more, separated by comma)
+          </label>
+          <textarea
+            className="form-control form__articles"
+            id="form-articles"
+            rows="3"
+            value={tempArticles}
+            onChange={handleChange}
+            name="articles"
+            placeholder="www.link.com, www.link.com"
+          />
+          <div className="pills-container">
+            {newPresentation.articles.map(article => {
+              return (
+                <span className="badge badge-pill badge-secondary">
+                  {article}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="form-keywords">
+            Keywords (one or more, separated by comma)
+          </label>
+
           <input
-            type="url"
+            type="text"
             className="form-control form__keywords"
             id="form-keywords"
-            placeholder="eg. learning, coding"
-            value={newPresentation.keywords}
+            placeholder="learning, coding"
+            value={tempKeywords}
             onChange={handleChange}
             name="keywords"
           />
+          <div className="pills-container">
+            {newPresentation.keywords.map(keyword => {
+              return (
+                <span className="badge badge-pill badge-secondary">
+                  {keyword}
+                </span>
+              );
+            })}
+          </div>
         </div>
 
         <button

@@ -18,21 +18,19 @@ class App extends Component {
       presenter: "",
       evaluator: "",
       topic: "",
-      articles: [
-        // this.state.tempArticles.article1,
-        // this.state.tempArticles.article2,
-        // this.state.tempArticles.article3
-      ],
+      articles: [""],
       date: "",
-      keywords: [],
+      keywords: [""],
       summary: ""
     },
     tempArticles: {
-      article1: "",
-      article2: "",
-      article3: ""
-    }
+      article1: "bla",
+      article2: "bla",
+      article3: "bla"
+    },
+    tempKeyword: ""
   };
+
   componentDidMount = () => {
     axios.get("/allpresentations").then(res => {
       this.setState({ presentations: res.data });
@@ -45,22 +43,44 @@ class App extends Component {
       method: "post",
       url: "/allpresentations",
       data: this.state.newPresentation
+    }).then(res => {
+      this.setState({ presentations: [...this.state.presentations, res.data] });
     });
+  };
+
+  handleEdit = (event, _id, history) => {
+    event.preventDefault();
+    axios({
+      method: "put",
+      url: "/allpresentations/" + _id,
+      data: this.state.newPresentation
+    }).then(res => {
+      const newStateData = this.state.presentations.map(presentation =>
+        presentation._id === res.data._id ? res.data : presentation
+      );
+      this.setState({ presentations: newStateData });
+    });
+    history.push("/presentations");
   };
 
   handleChange = event => {
     const fieldValue = event.target.value;
     const fieldName = event.target.name;
 
-    if (
-      fieldName === "article1" ||
-      fieldName === "article2" ||
-      fieldName === "article3"
-    ) {
+    if (fieldName === "articles") {
+      const articlesArray = fieldValue.split(", ");
       this.setState({
         newPresentation: {
           ...this.state.newPresentation,
-          articles: [...this.state.newPresentation.articles, fieldValue]
+          articles: articlesArray
+        }
+      });
+    } else if (fieldName === "keywords") {
+      const keywordsArray = fieldValue.split(", ");
+      this.setState({
+        newPresentation: {
+          ...this.state.newPresentation,
+          keywords: keywordsArray
         }
       });
     } else {
@@ -71,6 +91,25 @@ class App extends Component {
         }
       });
     }
+  };
+
+  editNewPresentation = (
+    history,
+    { presenter, evaluator, topic, articles, date, keywords, summary, _id }
+  ) => {
+    const editableDate = date.substring(0, 10);
+    this.setState({
+      newPresentation: {
+        presenter,
+        evaluator,
+        topic,
+        articles,
+        date: editableDate,
+        keywords,
+        summary
+      }
+    });
+    history.push("/presentations/edit/" + _id);
   };
 
   render() {
@@ -84,7 +123,17 @@ class App extends Component {
           <Route
             exact
             path="/presentations/edit/:_id"
-            render={props => <WritePresentation {...props} />}
+            render={props => (
+              <WritePresentation
+                {...props}
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+                newPresentation={this.state.newPresentation}
+                presentations={this.state.presentations}
+                editNewPresentation={this.editNewPresentation}
+                handleEdit={this.handleEdit}
+              />
+            )}
           />
 
           <Route
@@ -107,6 +156,7 @@ class App extends Component {
               <ViewPresentation
                 {...props}
                 presentations={this.state.presentations}
+                editNewPresentation={this.editNewPresentation}
               />
             )}
           />

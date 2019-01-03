@@ -2,7 +2,12 @@ import React from "react";
 import Buttons from "./Buttons";
 import "./ViewPresentation.scss";
 
-const ViewPresentation = ({ presentations, match }) => {
+const ViewPresentation = ({
+  presentations,
+  editNewPresentation,
+  match,
+  history
+}) => {
   const presentation = presentations.find(
     presentation => presentation._id === match.params._id
   );
@@ -54,7 +59,12 @@ const ViewPresentation = ({ presentations, match }) => {
           ))}
         </div>
       </div>
-      <Buttons className="presentation-view__buttons" />
+      <Buttons
+        className="presentation-view__buttons"
+        presentation={presentation}
+        editNewPresentation={editNewPresentation}
+        history={history}
+      />
     </div>
   );
 };

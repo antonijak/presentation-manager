@@ -10,7 +10,7 @@ const Home = () => {
           This is the place you can find, write and edit information for your
           presentation.
         </p>
-        <div class="input-group">
+        <div className="input-group">
           <Link
             to="/presentations"
             className="btn btn-outline-secondary btn-lg mr-2"
