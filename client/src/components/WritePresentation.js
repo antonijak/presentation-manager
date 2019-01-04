@@ -96,15 +96,18 @@ const WritePresentation = ({
             className="form-control form__articles"
             id="form-articles"
             rows="3"
-            value={tempArticles}
+            value={newPresentation.articles.join(", ")}
             onChange={handleChange}
             name="articles"
             placeholder="www.link.com, www.link.com"
           />
           <div className="pills-container">
-            {newPresentation.articles.map(article => {
+            {newPresentation.articles.map((article, i) => {
               return (
-                <span className="badge badge-pill badge-secondary">
+                <span
+                  key={i + "span"}
+                  className="badge badge-pill badge-secondary"
+                >
                   {article}
                 </span>
               );
@@ -122,14 +125,17 @@ const WritePresentation = ({
             className="form-control form__keywords"
             id="form-keywords"
             placeholder="learning, coding"
-            value={tempKeywords}
+            value={newPresentation.keywords.join(", ")}
             onChange={handleChange}
             name="keywords"
           />
           <div className="pills-container">
-            {newPresentation.keywords.map(keyword => {
+            {newPresentation.keywords.map((keyword, i) => {
               return (
-                <span className="badge badge-pill badge-secondary">
+                <span
+                  key={i + "keyword"}
+                  className="badge badge-pill badge-secondary"
+                >
                   {keyword}
                 </span>
               );

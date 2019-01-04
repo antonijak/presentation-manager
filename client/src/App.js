@@ -22,13 +22,7 @@ class App extends Component {
       date: "",
       keywords: [""],
       summary: ""
-    },
-    tempArticles: {
-      article1: "bla",
-      article2: "bla",
-      article3: "bla"
-    },
-    tempKeyword: ""
+    }
   };
 
   componentDidMount = () => {
@@ -44,7 +38,18 @@ class App extends Component {
       url: "/allpresentations",
       data: this.state.newPresentation
     }).then(res => {
-      this.setState({ presentations: [...this.state.presentations, res.data] });
+      this.setState({
+        presentations: [...this.state.presentations, res.data],
+        newPresentation: {
+          presenter: "",
+          evaluator: "",
+          topic: "",
+          articles: [""],
+          date: "",
+          keywords: [""],
+          summary: ""
+        }
+      });
     });
   };
 
@@ -58,7 +63,18 @@ class App extends Component {
       const newStateData = this.state.presentations.map(presentation =>
         presentation._id === res.data._id ? res.data : presentation
       );
-      this.setState({ presentations: newStateData });
+      this.setState({
+        presentations: newStateData,
+        newPresentation: {
+          presenter: "",
+          evaluator: "",
+          topic: "",
+          articles: [""],
+          date: "",
+          keywords: [""],
+          summary: ""
+        }
+      });
     });
     history.push("/presentations");
   };
@@ -168,6 +184,7 @@ class App extends Component {
               <Presentations
                 {...props}
                 presentations={this.state.presentations}
+                editNewPresentation={this.editNewPresentation}
               />
             )}
           />

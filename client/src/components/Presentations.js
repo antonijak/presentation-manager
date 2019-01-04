@@ -2,20 +2,17 @@ import React from "react";
 import PresentationItem from "./PresentationItem/PresentationItem";
 import "./Presentations.scss";
 
-const Presentations = props => {
+const Presentations = ({ presentations, editNewPresentation, history }) => {
   const presentationsList =
-    props.presentations.length !== 0 ? (
-      props.presentations.map((presentation, i) => {
+    presentations.length !== 0 ? (
+      presentations.map((presentation, i) => {
         return (
           <PresentationItem
-            _id={presentation._id}
-            presenter={presentation.presenter}
-            evaluator={presentation.evaluator}
-            topic={presentation.topic}
-            date={presentation.date}
-            articles={presentation.articles}
+            presentation={presentation}
             variant="item"
             key={i + "-item"}
+            editNewPresentation={editNewPresentation}
+            history={history}
           />
         );
       })
@@ -30,10 +27,12 @@ const Presentations = props => {
     <div className="container mt-5">
       <ul className="list-group list-group-flush ">
         <PresentationItem
-          presenter="Presenter"
-          evaluator="Evaluator"
-          topic="Topic"
-          date="Date"
+          presentation={{
+            presenter: "Presenter",
+            evaluator: "Evaluator",
+            topic: "Topic",
+            date: "Date"
+          }}
         />
         {presentationsList}
       </ul>

@@ -7,13 +7,10 @@ import Buttons from "../Buttons";
 import PresentationContent from "./components/PresentationContent";
 
 const PresentationItem = ({
-  presenter,
-  evaluator,
-  _id,
-  topic,
-  date,
-  articles,
-  variant
+  presentation,
+  variant,
+  history,
+  editNewPresentation
 }) => {
   const listClass = classNames({
     "list-group-item": true,
@@ -22,14 +19,16 @@ const PresentationItem = ({
 
   const topicContent =
     variant === "item" ? (
-      <Link to={"/presentations/" + _id}>{topic}</Link>
+      <Link to={"/presentations/" + presentation._id}>
+        {presentation.topic}
+      </Link>
     ) : (
-      topic
+      presentation.topic
     );
 
   const articleCell =
     variant === "item" ? (
-      <ArticleDropdown articles={articles} />
+      <ArticleDropdown articles={presentation.articles} />
     ) : (
       <PresentationContent content="Article" name="article" />
     );
@@ -37,20 +36,31 @@ const PresentationItem = ({
   const buttonsCell =
     variant === "item" ? (
       <Buttons
-        _id={_id}
+        _id={presentation._id}
         className="presentation__item presentation__item--buttons"
+        presentation={presentation}
+        history={history}
+        editNewPresentation={editNewPresentation}
       />
     ) : (
       <PresentationContent content="Modify" name="modify" />
     );
-
   return (
     <li className={listClass}>
       <div className="presentation">
-        <PresentationContent content={presenter} name="presenter" />
-        <PresentationContent content={evaluator} name="evaluator" />
+        <PresentationContent
+          content={presentation.presenter}
+          name="presenter"
+        />
+        <PresentationContent
+          content={presentation.evaluator}
+          name="evaluator"
+        />
         <PresentationContent content={topicContent} name="topic" />
-        <PresentationContent content={date.substring(0, 10)} name="date" />
+        <PresentationContent
+          content={presentation.date.substring(0, 10)}
+          name="date"
+        />
         {articleCell}
         {buttonsCell}
       </div>
