@@ -99,7 +99,7 @@ const WritePresentation = ({
             value={newPresentation.articles.join(", ")}
             onChange={handleChange}
             name="articles"
-            placeholder="www.link.com, www.link.com"
+            placeholder="https://www.link.com, https://www.link.com"
           />
           <div className="pills-container">
             {newPresentation.articles.map((article, i) => {
