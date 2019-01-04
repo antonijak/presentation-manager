@@ -22,28 +22,12 @@ class App extends Component {
     });
   };
 
-  clearInputs = history => {
-    if (history.params.location === "/presentations/add-new") {
-      this.setState({
-        newPresentation: {
-          presenter: "",
-          evaluator: "",
-          topic: "",
-          articles: [""],
-          date: "",
-          keywords: [""],
-          summary: ""
-        }
-      });
-    }
-  };
-
-  handleSubmit = (event, history) => {
+  handleSubmit = (event, history, newPresentation) => {
     event.preventDefault();
     axios({
       method: "post",
       url: "/allpresentations",
-      data: this.state.newPresentation
+      data: newPresentation
     }).then(res => {
       this.setState({
         presentations: [...this.state.presentations, res.data]
@@ -52,12 +36,12 @@ class App extends Component {
     history.push("/presentations/");
   };
 
-  handleEdit = (event, _id, history) => {
+  handleEdit = (event, _id, history, newPresentation) => {
     event.preventDefault();
     axios({
       method: "put",
       url: "/allpresentations/" + _id,
-      data: this.state.newPresentation
+      data: newPresentation
     }).then(res => {
       const newStateData = this.state.presentations.map(presentation =>
         presentation._id === res.data._id ? res.data : presentation
@@ -83,58 +67,7 @@ class App extends Component {
     history.push("/presentations");
   };
 
-  handleChange = event => {
-    const fieldValue = event.target.value;
-    const fieldName = event.target.name;
-
-    if (fieldName === "articles") {
-      const articlesArray = fieldValue.split(", ");
-      this.setState({
-        newPresentation: {
-          ...this.state.newPresentation,
-          articles: articlesArray
-        }
-      });
-    } else if (fieldName === "keywords") {
-      const keywordsArray = fieldValue.split(", ");
-      this.setState({
-        newPresentation: {
-          ...this.state.newPresentation,
-          keywords: keywordsArray
-        }
-      });
-    } else {
-      this.setState({
-        newPresentation: {
-          ...this.state.newPresentation,
-          [fieldName]: fieldValue
-        }
-      });
-    }
-  };
-
-  editNewPresentation = (
-    history,
-    { presenter, evaluator, topic, articles, date, keywords, summary, _id }
-  ) => {
-    const editableDate = date.substring(0, 10);
-    this.setState({
-      newPresentation: {
-        presenter,
-        evaluator,
-        topic,
-        articles,
-        date: editableDate,
-        keywords,
-        summary
-      }
-    });
-    history.push("/presentations/edit/" + _id);
-  };
-
   render() {
-    console.log(this.state.presentations);
-
     return (
       <div className="App container">
         <Header />
@@ -148,6 +81,7 @@ class App extends Component {
             render={props => (
               <WritePresentation
                 {...props}
+                key="edit"
                 handleSubmit={this.handleSubmit}
                 handleChange={this.handleChange}
                 newPresentation={this.state.newPresentation}
@@ -164,6 +98,7 @@ class App extends Component {
             render={props => (
               <WritePresentation
                 {...props}
+                key="add-new"
                 handleSubmit={this.handleSubmit}
                 handleChange={this.handleChange}
                 newPresentation={this.state.newPresentation}
