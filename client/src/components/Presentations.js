@@ -9,21 +9,19 @@ const Presentations = ({
   history
 }) => {
   const presentationsList =
-    presentations.length !== 0 ? (
+    presentations.length > 0 ? (
       presentations
         .sort((a, b) => a.date.localeCompare(b.date))
-        .map((presentation, i) => {
-          return (
-            <PresentationItem
-              presentation={presentation}
-              variant="item"
-              key={i + "-item"}
-              editNewPresentation={editNewPresentation}
-              handleDelete={handleDelete}
-              history={history}
-            />
-          );
-        })
+        .map((presentation, i) => (
+          <PresentationItem
+            presentation={presentation}
+            variant="item"
+            key={i + "-item"}
+            editNewPresentation={editNewPresentation}
+            handleDelete={handleDelete}
+            history={history}
+          />
+        ))
     ) : (
       <div className="container" id="spinner-parent">
         <div className="spinner-border mt-4" role="status">
@@ -31,6 +29,7 @@ const Presentations = ({
         </div>
       </div>
     );
+
   return (
     <div className="container mt-5">
       <ul className="list-group list-group-flush ">
