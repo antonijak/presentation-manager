@@ -10,18 +10,20 @@ const Presentations = ({
 }) => {
   const presentationsList =
     presentations.length !== 0 ? (
-      presentations.map((presentation, i) => {
-        return (
-          <PresentationItem
-            presentation={presentation}
-            variant="item"
-            key={i + "-item"}
-            editNewPresentation={editNewPresentation}
-            handleDelete={handleDelete}
-            history={history}
-          />
-        );
-      })
+      presentations
+        .sort((a, b) => a.date.localeCompare(b.date))
+        .map((presentation, i) => {
+          return (
+            <PresentationItem
+              presentation={presentation}
+              variant="item"
+              key={i + "-item"}
+              editNewPresentation={editNewPresentation}
+              handleDelete={handleDelete}
+              history={history}
+            />
+          );
+        })
     ) : (
       <div className="container" id="spinner-parent">
         <div className="spinner-border mt-4" role="status">
