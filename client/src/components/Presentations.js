@@ -2,7 +2,12 @@ import React from "react";
 import PresentationItem from "./PresentationItem/PresentationItem";
 import "./Presentations.scss";
 
-const Presentations = ({ presentations, editNewPresentation, history }) => {
+const Presentations = ({
+  presentations,
+  editNewPresentation,
+  handleDelete,
+  history
+}) => {
   const presentationsList =
     presentations.length !== 0 ? (
       presentations.map((presentation, i) => {
@@ -12,6 +17,7 @@ const Presentations = ({ presentations, editNewPresentation, history }) => {
             variant="item"
             key={i + "-item"}
             editNewPresentation={editNewPresentation}
+            handleDelete={handleDelete}
             history={history}
           />
         );

@@ -10,7 +10,8 @@ const PresentationItem = ({
   presentation,
   variant,
   history,
-  editNewPresentation
+  editNewPresentation,
+  handleDelete
 }) => {
   const listClass = classNames({
     "list-group-item": true,
@@ -41,6 +42,7 @@ const PresentationItem = ({
         presentation={presentation}
         history={history}
         editNewPresentation={editNewPresentation}
+        handleDelete={handleDelete}
       />
     ) : (
       <PresentationContent content="Modify" name="modify" />

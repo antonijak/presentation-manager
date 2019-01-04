@@ -5,6 +5,7 @@ import "./ViewPresentation.scss";
 const ViewPresentation = ({
   presentations,
   editNewPresentation,
+  handleDelete,
   match,
   history
 }) => {
@@ -42,7 +43,7 @@ const ViewPresentation = ({
         <div className="col-2">Articles:</div>
         <div className="col-10 row__articles">
           {presentation.articles.map((article, i) => (
-            <a key={i + "link"} href={article} target="blank">
+            <a key={i + "linkview"} href={article} target="blank">
               {article}
             </a>
           ))}
@@ -53,7 +54,10 @@ const ViewPresentation = ({
         <div className="col-2">Keywords:</div>
         <div className="col-10 row__keywords">
           {presentation.keywords.map((keyword, i) => (
-            <span className="badge badge-pill badge-light view-keyword">
+            <span
+              key={i + "keyview"}
+              className="badge badge-pill badge-light view-keyword"
+            >
               {keyword}
             </span>
           ))}
@@ -63,6 +67,7 @@ const ViewPresentation = ({
         className="presentation-view__buttons"
         presentation={presentation}
         editNewPresentation={editNewPresentation}
+        handleDelete={handleDelete}
         history={history}
       />
     </div>

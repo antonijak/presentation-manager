@@ -75,6 +75,6 @@ function deletePresentation(req, res) {
       res.status(404).send(err);
     }
     console.log("Saved");
-    res.send(`Presentation with id ${_id} has been removed`);
+    res.send(presentation);
   });
 }

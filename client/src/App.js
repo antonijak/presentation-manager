@@ -13,16 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   state = {
-    presentations: [],
-    newPresentation: {
-      presenter: "",
-      evaluator: "",
-      topic: "",
-      articles: [""],
-      date: "",
-      keywords: [""],
-      summary: ""
-    }
+    presentations: []
   };
 
   componentDidMount = () => {
@@ -31,15 +22,9 @@ class App extends Component {
     });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    axios({
-      method: "post",
-      url: "/allpresentations",
-      data: this.state.newPresentation
-    }).then(res => {
+  clearInputs = history => {
+    if (history.params.location === "/presentations/add-new") {
       this.setState({
-        presentations: [...this.state.presentations, res.data],
         newPresentation: {
           presenter: "",
           evaluator: "",
@@ -50,7 +35,21 @@ class App extends Component {
           summary: ""
         }
       });
+    }
+  };
+
+  handleSubmit = (event, history) => {
+    event.preventDefault();
+    axios({
+      method: "post",
+      url: "/allpresentations",
+      data: this.state.newPresentation
+    }).then(res => {
+      this.setState({
+        presentations: [...this.state.presentations, res.data]
+      });
     });
+    history.push("/presentations/");
   };
 
   handleEdit = (event, _id, history) => {
@@ -63,17 +62,22 @@ class App extends Component {
       const newStateData = this.state.presentations.map(presentation =>
         presentation._id === res.data._id ? res.data : presentation
       );
+      this.setState({ presentations: newStateData });
+    });
+    history.push("/presentations/");
+  };
+
+  handleDelete = (_id, history) => {
+    axios({
+      method: "delete",
+      url: "/allpresentations/" + _id,
+      data: this.state.newPresentation
+    }).then(res => {
+      const newStateData = this.state.presentations.filter(
+        presentation => presentation._id !== res.data._id
+      );
       this.setState({
-        presentations: newStateData,
-        newPresentation: {
-          presenter: "",
-          evaluator: "",
-          topic: "",
-          articles: [""],
-          date: "",
-          keywords: [""],
-          summary: ""
-        }
+        presentations: newStateData
       });
     });
     history.push("/presentations");
@@ -129,6 +133,8 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state.presentations);
+
     return (
       <div className="App container">
         <Header />
@@ -173,6 +179,7 @@ class App extends Component {
                 {...props}
                 presentations={this.state.presentations}
                 editNewPresentation={this.editNewPresentation}
+                handleDelete={this.handleDelete}
               />
             )}
           />
@@ -185,6 +192,7 @@ class App extends Component {
                 {...props}
                 presentations={this.state.presentations}
                 editNewPresentation={this.editNewPresentation}
+                handleDelete={this.handleDelete}
               />
             )}
           />
