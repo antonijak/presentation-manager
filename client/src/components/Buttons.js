@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Buttons = ({
   presentation,
@@ -9,13 +10,14 @@ const Buttons = ({
 }) => {
   return (
     <div className={className}>
-      <button
-        type="button"
-        className="btn btn-primary"
-        onClick={() => editNewPresentation(history, presentation)}
+      <Link
+        to={"/presentations/edit/" + presentation._id}
+        className="btn btn-primary btn-lg"
+        tabindex="-1"
+        role="button"
       >
         Edit
-      </button>
+      </Link>
 
       <button
         type="button"

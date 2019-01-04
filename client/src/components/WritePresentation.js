@@ -32,6 +32,17 @@ class WritePresentation extends Component {
     }
   };
 
+  validate = () =>
+    this.state.presenter !== "" &&
+    this.state.evaluator !== "" &&
+    this.state.topic !== "" &&
+    this.state.articles.join("") !== "" &&
+    this.state.date !== "" &&
+    this.state.keywords.join("") !== "" &&
+    this.state.summary !== ""
+      ? true
+      : false;
+
   handleChange = event => {
     const value = event.target.value;
     const name = event.target.name;
@@ -61,7 +72,6 @@ class WritePresentation extends Component {
   render() {
     return (
       <div className="container mt-4">
-        <h2>New Presentation</h2>
         <form onSubmit={this.addOrEdit}>
           <div className="form-row">
             <div className="form-group col-md-4">
@@ -188,6 +198,7 @@ class WritePresentation extends Component {
             type="submit"
             className="btn btn-primary form__submit"
             value="Submit"
+            disabled={this.validate() ? false : true}
           >
             Submit
           </button>
