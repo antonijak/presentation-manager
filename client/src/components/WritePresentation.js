@@ -44,7 +44,7 @@ class WritePresentation extends Component {
       : false;
 
   handleChange = event => {
-    const value = event.target.value;
+    const value = event.target.value.toString();
     const name = event.target.name;
 
     if (name === "articles") {

@@ -5,7 +5,6 @@ import Home from "./components/Home";
 import WritePresentation from "./components/WritePresentation";
 import Presentations from "./components/Presentations";
 import ViewPresentation from "./components/ViewPresentation";
-import NotFound from "./components/NotFound";
 import Header from "./components/Header";
 import * as actions from "./actions/actions";
 // import axios from "axios";
@@ -30,8 +29,10 @@ class App extends Component {
   };
 
   handleDelete = (_id, history) => {
-    this.props.deletePresentation(_id);
-    history.push("/presentations");
+    if (window.confirm("Are you sure you want to delete this presentation?")) {
+      this.props.deletePresentation(_id);
+      history.push("/presentations");
+    }
   };
 
   render() {
@@ -42,7 +43,19 @@ class App extends Component {
         <Header />
 
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <Home
+                {...props}
+                key="home"
+                header="Welcome, student!"
+                paragraph="This is the place you can find, write and edit information for your
+          presentation."
+              />
+            )}
+          />
 
           <Route
             exact
@@ -99,7 +112,16 @@ class App extends Component {
             )}
           />
 
-          <Route component={NotFound} />
+          <Route
+            render={props => (
+              <Home
+                {...props}
+                key="404-not-found"
+                header="404 Page not found"
+                paragraph="Go back to:"
+              />
+            )}
+          />
         </Switch>
       </div>
     );

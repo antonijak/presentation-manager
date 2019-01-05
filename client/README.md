@@ -2,7 +2,7 @@
 
 ### Simple full-stack web app for adding, viewing, editing and deleting student presentations 
 
-See [demo]()
+See [demo](https://presentation-app-integrify.herokuapp.com)
 
 Created using React, Redux, Node, MongoDB...
 

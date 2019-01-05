@@ -1,15 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ header, paragraph }) => {
   return (
     <div className="jumbotron jumbotron-fluid mt-5">
       <div className="container">
-        <h2 className="display-4">Welcome, student!</h2>
-        <p className="lead">
-          This is the place you can find, write and edit information for your
-          presentation.
-        </p>
+        <h2 className="display-4">{header}</h2>
+        <p className="lead">{paragraph}</p>
         <div className="input-group">
           <Link
             to="/presentations"
