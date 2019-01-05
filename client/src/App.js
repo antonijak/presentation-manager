@@ -1,73 +1,42 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import Home from "./components/Home";
 import WritePresentation from "./components/WritePresentation";
 import Presentations from "./components/Presentations";
 import ViewPresentation from "./components/ViewPresentation";
 import NotFound from "./components/NotFound";
 import Header from "./components/Header";
-import axios from "axios";
+import * as actions from "./actions/actions";
+// import axios from "axios";
+import { connect } from "react-redux";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
-  state = {
-    presentations: []
-  };
-
   componentDidMount = () => {
-    axios.get("/allpresentations").then(res => {
-      this.setState({ presentations: res.data });
-    });
+    this.props.getAllPresentations();
   };
 
   handleSubmit = (event, history, newPresentation) => {
-    event.preventDefault();
-    axios({
-      method: "post",
-      url: "/allpresentations",
-      data: newPresentation
-    }).then(res => {
-      this.setState({
-        presentations: [...this.state.presentations, res.data]
-      });
-    });
+    this.props.addPresentation(newPresentation);
     history.push("/presentations/");
   };
 
   handleEdit = (event, _id, history, newPresentation) => {
     event.preventDefault();
-    axios({
-      method: "put",
-      url: "/allpresentations/" + _id,
-      data: newPresentation
-    }).then(res => {
-      const newStateData = this.state.presentations.map(presentation =>
-        presentation._id === res.data._id ? res.data : presentation
-      );
-      this.setState({ presentations: newStateData });
-    });
+    this.props.editPresentation(_id, newPresentation);
     history.push("/presentations/");
   };
 
   handleDelete = (_id, history) => {
-    axios({
-      method: "delete",
-      url: "/allpresentations/" + _id,
-      data: this.state.newPresentation
-    }).then(res => {
-      const newStateData = this.state.presentations.filter(
-        presentation => presentation._id !== res.data._id
-      );
-      this.setState({
-        presentations: newStateData
-      });
-    });
+    this.props.deletePresentation(_id);
     history.push("/presentations");
   };
 
   render() {
+    console.log(this.props);
+
     return (
       <div className="App container">
         <Header />
@@ -84,8 +53,7 @@ class App extends Component {
                 key="edit"
                 handleSubmit={this.handleSubmit}
                 handleChange={this.handleChange}
-                newPresentation={this.state.newPresentation}
-                presentations={this.state.presentations}
+                presentations={this.props.presentations}
                 editNewPresentation={this.editNewPresentation}
                 handleEdit={this.handleEdit}
               />
@@ -101,7 +69,6 @@ class App extends Component {
                 key="add-new"
                 handleSubmit={this.handleSubmit}
                 handleChange={this.handleChange}
-                newPresentation={this.state.newPresentation}
               />
             )}
           />
@@ -112,7 +79,7 @@ class App extends Component {
             render={props => (
               <ViewPresentation
                 {...props}
-                presentations={this.state.presentations}
+                presentations={this.props.presentations}
                 editNewPresentation={this.editNewPresentation}
                 handleDelete={this.handleDelete}
               />
@@ -125,7 +92,7 @@ class App extends Component {
             render={props => (
               <Presentations
                 {...props}
-                presentations={this.state.presentations}
+                presentations={this.props.presentations}
                 editNewPresentation={this.editNewPresentation}
                 handleDelete={this.handleDelete}
               />
@@ -138,5 +105,24 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return { presentations: state.presentations };
+};
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    getAllPresentations: () => dispatch(actions.getAllPresentations()),
+    addPresentation: presentation =>
+      dispatch(actions.addPresentation(presentation)),
+    editPresentation: (_id, presentation) =>
+      dispatch(actions.editPresentation(_id, presentation)),
+    deletePresentation: _id => dispatch(actions.deletePresentation(_id))
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);

@@ -13,7 +13,7 @@ const Buttons = ({
       <Link
         to={"/presentations/edit/" + presentation._id}
         className="btn btn-primary btn-lg"
-        tabindex="-1"
+        tabIndex="-1"
         role="button"
       >
         Edit
