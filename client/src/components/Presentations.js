@@ -37,7 +37,7 @@ const Presentations = ({
       <ul className="list-group list-group-flush ">
         <PresentationItem
           presentation={{
-            presenter: "Presenter",
+            presenter: "PRESENTER",
             evaluator: "Evaluator",
             topic: "Topic",
             date: "Date"
