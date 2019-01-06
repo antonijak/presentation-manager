@@ -8,8 +8,6 @@ const Presentations = ({
   handleDelete,
   history
 }) => {
-  console.log("presentations", presentations);
-
   const presentationsList =
     presentations.length > 0 ? (
       presentations

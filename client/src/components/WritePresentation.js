@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import "./WritePresentation.scss";
 
 class WritePresentation extends Component {
