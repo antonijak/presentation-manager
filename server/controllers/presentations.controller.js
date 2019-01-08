@@ -3,7 +3,6 @@ const Presentation = require("../models/presentation");
 module.exports = {
   showPresentations,
   addPresentation,
-  showSinglePresentation,
   editPresentation,
   deletePresentation
 };
@@ -28,19 +27,6 @@ function addPresentation(req, res) {
   });
   presentation.save().catch(err => console.log(err));
   res.send(presentation);
-}
-
-function showSinglePresentation(req, res) {
-  const _id = req.params.presentationId;
-  Presentation.find({ _id }, (err, presentation) => {
-    if (err) {
-      res.status(404).send("An error");
-    }
-    if (presentation.length < 1) {
-      res.send("A student with that id was not found");
-    }
-    res.json(presentation);
-  });
 }
 
 function editPresentation(req, res) {
@@ -74,7 +60,6 @@ function deletePresentation(req, res) {
     if (err) {
       res.status(404).send(err);
     }
-    console.log("Saved");
     res.send(presentation);
   });
 }

@@ -1,7 +1,7 @@
 import React from "react";
 const ArticleDropdown = ({ articles }) => {
   return (
-    <div className="dropdown presentation__item presentation__item--article">
+    <div className="dropdown presentation__item presentation__item__article">
       <button
         className=" btn btn-light dropdown-toggle"
         type="button"

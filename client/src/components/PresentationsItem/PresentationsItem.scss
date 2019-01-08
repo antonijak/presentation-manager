@@ -1,0 +1,148 @@
+.bold-text {
+    font-weight: bold;
+}
+
+.presentation {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__item {
+        text-align: left;
+        padding: 0 .5rem;
+        // border: 1px solid black;
+
+        &__presenter {
+            width: 15%;
+            padding-left: 0;
+        }
+
+        &__evaluator {
+            width: 15%;
+        }
+
+        &__topic {
+            width: 29%;
+        }
+
+        &__date {
+            width: 8rem;
+        }
+
+        &__article {
+            width: 9.5rem;
+
+            .btn {
+                border: none;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+
+                .badge {
+                    margin-top: 2px;
+                }
+            }
+        }
+
+        &__buttons {
+            width: 9.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-right: 0;
+        }
+
+        &__modify {
+            width: 9.5rem;
+        }
+
+    }
+   
+}
+
+@media only screen and (max-width : 1200px){
+    .presentation {
+        flex-wrap: wrap;
+
+        &__item {
+            height: 4rem;
+
+            &__article {
+                padding-right: 0;
+            }
+
+            &__buttons {
+                margin-left: 83%;
+                height: 2.5rem;
+                padding: 0;
+            }
+
+            &__modify {
+                display: none;
+            }
+        }
+    }
+    .bold-text {
+        height: 3rem;
+    }
+}
+
+@media only screen and (max-width : 992px){
+    .presentation {
+
+        &__item {
+
+            &__date {
+                width: 20%;
+            }
+
+            &__article {
+                width: 80%;
+                height: 2.5rem;
+                padding-left: 0;
+                padding-right: .5rem;
+            }
+
+            &__buttons {
+                margin: 0;
+                width: 20%;
+                padding: 0 .5rem;
+            }
+
+        }
+    }
+    .bold-text {
+        height: 3rem;
+    }
+}
+
+@media only screen and (max-width : 984px){
+    .presentation {
+
+        &__item {
+
+            &__date {
+                width: 20%;
+            }
+
+            &__article {
+                width: 80%;
+                height: 2.5rem;
+                padding-left: 0;
+                padding-right: .5rem;
+            }
+
+            &__buttons {
+                margin: 0;
+                width: 20%;
+                padding: 0 .5rem;
+            }
+
+        }
+    }
+    .bold-text {
+        height: 3rem;
+    }
+}

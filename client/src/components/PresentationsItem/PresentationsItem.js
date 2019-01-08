@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./PresentationItem.scss";
+import "./PresentationsItem.scss";
 import classNames from "class-names";
 import ArticleDropdown from "./components/ArticleDropdown";
 import Buttons from "../Buttons";
 import PresentationContent from "./components/PresentationContent";
 
-const PresentationItem = ({
+const PresentationsItem = ({
   presentation,
   variant,
   history,
@@ -38,7 +38,7 @@ const PresentationItem = ({
     variant === "item" ? (
       <Buttons
         _id={presentation._id}
-        className="presentation__item presentation__item--buttons"
+        className="presentation__item presentation__item__buttons"
         presentation={presentation}
         history={history}
         editNewPresentation={editNewPresentation}
@@ -70,4 +70,4 @@ const PresentationItem = ({
   );
 };
 
-export default PresentationItem;
+export default PresentationsItem;

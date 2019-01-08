@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Home = ({ header, paragraph }) => {
+const Home = ({ heading, paragraph }) => {
   return (
     <div className="jumbotron jumbotron-fluid mt-5">
       <div className="container">
-        <h2 className="display-4">{header}</h2>
+        <h2 className="display-4">{heading}</h2>
         <p className="lead">{paragraph}</p>
         <div className="input-group">
           <Link

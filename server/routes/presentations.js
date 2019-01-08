@@ -4,7 +4,6 @@ const PresentationsRouter = express.Router();
 const {
   showPresentations,
   addPresentation,
-  showSinglePresentation,
   editPresentation,
   deletePresentation
 } = require("../controllers/presentations.controller");
@@ -12,8 +11,6 @@ const {
 PresentationsRouter.get("/", showPresentations);
 
 PresentationsRouter.post("/", addPresentation);
-
-PresentationsRouter.get("/:presentationId", showSinglePresentation);
 
 PresentationsRouter.put("/:presentationId", editPresentation);
 

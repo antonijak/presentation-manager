@@ -46,7 +46,7 @@ class App extends Component {
               <Home
                 {...props}
                 key="home"
-                header="Welcome, student!"
+                heading="Welcome, student!"
                 paragraph="This is the place you can find, write and edit information for your
           presentation."
               />
@@ -113,7 +113,7 @@ class App extends Component {
               <Home
                 {...props}
                 key="404-not-found"
-                header="404 Page not found"
+                heading="404 Page not found"
                 paragraph="Go back to:"
               />
             )}

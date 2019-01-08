@@ -1,5 +1,5 @@
 import React from "react";
-import PresentationItem from "./PresentationItem/PresentationItem";
+import PresentationsItem from "./PresentationsItem/PresentationsItem";
 import "./Presentations.scss";
 
 const Presentations = ({
@@ -13,7 +13,7 @@ const Presentations = ({
       presentations
         .sort((a, b) => a.date.localeCompare(b.date))
         .map((presentation, i) => (
-          <PresentationItem
+          <PresentationsItem
             presentation={presentation}
             variant="item"
             key={i + "-item"}
@@ -33,7 +33,7 @@ const Presentations = ({
   return (
     <div className="container mt-5">
       <ul className="list-group list-group-flush ">
-        <PresentationItem
+        <PresentationsItem
           presentation={{
             presenter: "Presenter",
             evaluator: "Evaluator",
