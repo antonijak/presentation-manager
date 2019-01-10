@@ -43,7 +43,12 @@ const ViewPresentation = ({
         <div className="col-2">Articles:</div>
         <div className="col-10 row__articles">
           {presentation.articles.map((article, i) => (
-            <a key={i + "linkview"} href={article} target="blank">
+            <a
+              className="article-link"
+              key={i + "linkview"}
+              href={article}
+              target="blank"
+            >
               {article}
             </a>
           ))}

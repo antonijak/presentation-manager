@@ -1,4 +1,6 @@
 import React from "react";
+import "./ArticleDropdown.scss";
+
 const ArticleDropdown = ({ articles }) => {
   return (
     <div className="dropdown presentation__item presentation__item__article">

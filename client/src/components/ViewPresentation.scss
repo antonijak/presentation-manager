@@ -30,8 +30,29 @@
 				font-size: .9rem;
 			}
 		}
+	}	
+}
+
+@media only screen and (max-width : 600px){
+	.col-2 {
+		min-width: 40%;
+		padding: 0;
+		color: rgb(154, 154, 154);
 	}
+
+	.col-10 {
+		min-width: 100%;
+		padding: 0;
+	}
+
+
+	&__articles {
+		overflow: scroll;
 	
-	
-	
+
+		.article-link {
+			margin-bottom: .5rem;
+			width: 100%;
+		}
+	}
 }

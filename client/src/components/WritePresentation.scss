@@ -6,11 +6,14 @@
 .pills-container {
         margin-top: 1rem;
 
-        .badge {
+        .badge-pill {
                 margin-right: .5rem;
-				margin-bottom: .5rem;
+								margin-bottom: .5rem;
                 font-size: 1rem;
-                font-weight: normal;
+								font-weight: normal;
+								max-width: 100%;
+								overflow: hidden;
         }
 
 }
+

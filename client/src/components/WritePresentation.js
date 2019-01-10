@@ -156,7 +156,7 @@ class WritePresentation extends Component {
                 return (
                   <span
                     key={i + "span"}
-                    className="badge badge-pill badge-secondary"
+                    className="badge badge-pill badge-secondary article-pill"
                   >
                     {article}
                   </span>
@@ -184,7 +184,7 @@ class WritePresentation extends Component {
                 return (
                   <span
                     key={i + "keyword"}
-                    className="badge badge-pill badge-secondary"
+                    className="badge badge-pill badge-secondary keyword-pill"
                   >
                     {keyword}
                   </span>
