@@ -1,19 +1,44 @@
+.write-presentations {
 
-.form__submit {
-        margin: 1rem 0;
+	&__button-container {
+		border-bottom: 1px solid rgb(235, 233, 233);
+		padding: 1rem
+	}
+
+	&__title {
+		padding: 1rem;
+		margin-bottom: 0;
+	}
+
+	&__form {
+		padding: 1rem;
+
+		.pills-container {
+			margin-top: 1rem;
+
+			.badge-pill {
+				margin-right: .5rem;
+				margin-bottom: .5rem;
+				font-size: 1rem;
+				font-weight: normal;
+				max-width: 100%;
+				overflow: hidden;
+			}
+
+		}
+
+		.form__submit {
+			margin: 1rem 0;
+		}
+	}
+
 }
 
-.pills-container {
-        margin-top: 1rem;
+@media only screen and (max-width : 600px){
+	.write-presentations {
 
-        .badge-pill {
-                margin-right: .5rem;
-								margin-bottom: .5rem;
-                font-size: 1rem;
-								font-weight: normal;
-								max-width: 100%;
-								overflow: hidden;
-        }
-
+		&__back-btn {
+			margin: 0 0 1rem;
+		}
+	}
 }
-

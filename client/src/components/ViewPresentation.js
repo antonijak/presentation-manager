@@ -1,6 +1,7 @@
 import React from "react";
 import Buttons from "./Buttons";
 import "./ViewPresentation.scss";
+import { Link } from "react-router-dom";
 
 const ViewPresentation = ({
   presentations,
@@ -9,72 +10,89 @@ const ViewPresentation = ({
   match,
   history
 }) => {
-  const presentation = presentations.find(
-    presentation => presentation._id === match.params._id
-  );
+  const presentation = presentations
+    ? presentations.find(presentation => presentation._id === match.params._id)
+    : null;
 
   return (
-    <div className="container presentation-view">
-      <h2 className="mt-4 mb-4 presentation-view__name">
-        {presentation.topic}
-      </h2>
+    <div className="container view-presentation">
+      <Link
+        to="/presentations"
+        className="btn btn-outline-primary view-presentation__back-btn"
+        tabIndex="-1"
+        role="button"
+      >
+        Back
+      </Link>
 
-      <div className="row">
-        <div className="col-2">Presenter:</div>
-        <div className="col-10">{presentation.presenter}</div>
-      </div>
-
-      <div className="row">
-        <div className="col-2">Evaluator:</div>
-        <div className="col-10">{presentation.evaluator}</div>
-      </div>
-
-      <div className="row">
-        <div className="col-2">Date:</div>
-        <div className="col-10">{presentation.date.substring(0, 10)}</div>
-      </div>
-
-      <div className="row">
-        <div className="col-2">Summary:</div>
-        <div className="col-10">{presentation.summary}</div>
-      </div>
-
-      <div className="row">
-        <div className="col-2">Articles:</div>
-        <div className="col-10 row__articles">
-          {presentation.articles.map((article, i) => (
-            <a
-              className="article-link"
-              key={i + "linkview"}
-              href={article}
-              target="blank"
-            >
-              {article}
-            </a>
-          ))}
+      {!presentation ? (
+        <div className="container" id="spinner-parent">
+          <div className="spinner-border mt-4" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
         </div>
-      </div>
+      ) : (
+        <>
+          <h2 className="view-presentation__name">{presentation.topic}</h2>
 
-      <div className="row">
-        <div className="col-2">Keywords:</div>
-        <div className="col-10 row__keywords">
-          {presentation.keywords.map((keyword, i) => (
-            <span
-              key={i + "keyview"}
-              className="badge badge-pill badge-light view-keyword"
-            >
-              {keyword}
-            </span>
-          ))}
-        </div>
-      </div>
-      <Buttons
-        className="presentation-view__buttons"
-        presentation={presentation}
-        editNewPresentation={editNewPresentation}
-        handleDelete={handleDelete}
-        history={history}
-      />
+          <div className="row view-presentation__presenter">
+            <div className="col-2">Presenter:</div>
+            <div className="col-10">{presentation.presenter}</div>
+          </div>
+
+          <div className="row">
+            <div className="col-2">Evaluator:</div>
+            <div className="col-10">{presentation.evaluator}</div>
+          </div>
+
+          <div className="row">
+            <div className="col-2">Date:</div>
+            <div className="col-10">{presentation.date.substring(0, 10)}</div>
+          </div>
+
+          <div className="row">
+            <div className="col-2">Summary:</div>
+            <div className="col-10">{presentation.summary}</div>
+          </div>
+
+          <div className="row">
+            <div className="col-2">Articles:</div>
+            <div className="col-10 row__articles">
+              {presentation.articles.map((article, i) => (
+                <a
+                  className="article-link"
+                  key={i + "linkview"}
+                  href={article}
+                  target="blank"
+                >
+                  {article}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-2">Keywords:</div>
+            <div className="col-10 row__keywords">
+              {presentation.keywords.map((keyword, i) => (
+                <span
+                  key={i + "keyview"}
+                  className="badge badge-pill badge-light view-keyword"
+                >
+                  {keyword}
+                </span>
+              ))}
+            </div>
+          </div>
+          <Buttons
+            className="view-presentation__buttons"
+            presentation={presentation}
+            editNewPresentation={editNewPresentation}
+            handleDelete={handleDelete}
+            history={history}
+          />
+        </>
+      )}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./WritePresentation.scss";
 
 class WritePresentation extends Component {
@@ -70,8 +71,21 @@ class WritePresentation extends Component {
 
   render() {
     return (
-      <div className="container mt-4">
-        <form onSubmit={this.addOrEdit}>
+      <div className="write-presentations">
+        <div className="write-presentations__button-container">
+          <Link
+            to="/presentations"
+            className="btn btn-outline-primary button-container__back-btn"
+            tabIndex="-1"
+            role="button"
+          >
+            Back
+          </Link>
+        </div>
+        <h2 className="write-presentations__title">
+          {this.state.topic ? this.state.topic : "New Presentation"}
+        </h2>
+        <form onSubmit={this.addOrEdit} className="write-presentations__form">
           <div className="form-row">
             <div className="form-group col-md-4">
               <label htmlFor="form-presenter">Presenter</label>
