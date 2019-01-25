@@ -2,7 +2,9 @@
 
 ### Simple CMS for adding, viewing, editing and deleting student presentations 
 
-See [demo](https://presentation-app-integrify.herokuapp.com)
+See [demo](https://presentation-app-integrify.herokuapp.com)*
+
+*Deployed on Heroku - Allow some loading time
 
 Created using React, Redux, Node, MongoDB...
 
@@ -11,7 +13,6 @@ Created using React, Redux, Node, MongoDB...
     * Express
     * MongoDB
     * Mongoose
-    * axios
 
 - and just to get familiar:
     * Bootstrap
