@@ -1,6 +1,6 @@
 # Presentation App
 
-### Simple full-stack web app for adding, viewing, editing and deleting student presentations 
+### Simple CMS for adding, viewing, editing and deleting student presentations 
 
 See [demo](https://presentation-app-integrify.herokuapp.com)
 
