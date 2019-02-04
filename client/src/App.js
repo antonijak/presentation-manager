@@ -9,6 +9,8 @@ import WritePresentation from "./components/WritePresentation";
 import Presentations from "./components/Presentations";
 import ViewPresentation from "./components/ViewPresentation";
 import Header from "./components/Header";
+import SignUp from "./components/SignUp/index";
+import LogIn from "./components/LogIn/index";
 
 class App extends Component {
   componentDidMount = () => {
@@ -39,20 +41,6 @@ class App extends Component {
         <Header />
 
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={props => (
-              <Home
-                {...props}
-                key="home"
-                heading="Welcome, student!"
-                paragraph="This is the place you can find, write and edit information for your
-          presentation."
-              />
-            )}
-          />
-
           <Route
             exact
             path="/presentations/edit/:_id"
@@ -104,6 +92,21 @@ class App extends Component {
                 presentations={this.props.presentations}
                 editNewPresentation={this.editNewPresentation}
                 handleDelete={this.handleDelete}
+              />
+            )}
+          />
+          <Route path="/signup" render={props => <SignUp {...props} />} />
+          <Route path="/login" render={props => <LogIn {...props} />} />
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <Home
+                {...props}
+                key="home"
+                heading="Welcome, student!"
+                paragraph="This is the place you can find, write and edit information for your
+          presentation."
               />
             )}
           />

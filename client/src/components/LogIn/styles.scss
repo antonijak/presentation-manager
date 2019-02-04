@@ -1,0 +1,22 @@
+.login {
+  margin: 0 auto;
+  max-width: 28rem;
+
+
+  &__title {
+    padding: 2rem 1rem 1rem;
+    margin: 0;
+  }
+
+  &__form {
+    padding: 1rem;
+    &__row {
+
+      .form-group{
+        padding: 0;
+      }
+    }
+    &__submit {
+    }
+  }
+}
