@@ -3,13 +3,22 @@
     overflow: hidden;
     min-height: 100vh;
     padding-bottom: 6rem;
-    @media (max-width: 992px) {
-        min-width: 90%;
-    }
-    @media (max-width : 600px) {
-        padding: 0;
-        padding-bottom: 6rem;
-        margin-top: 1rem;
+   
+
+    &.container { 
+        @media (max-width: 992px) {
+            min-width: 90%;
+        }
+        @media (max-width : 768px) {
+            padding: 0;
+        }
+        @media (max-width : 600px) {
+            margin-top: 1rem;
+        }
+        @media (max-width : 600px) {
+            padding: 0;
+            padding-bottom: 8rem;
+        } 
     }
 
     #spinner-parent {
@@ -29,3 +38,4 @@
         }
     }
 }
+
