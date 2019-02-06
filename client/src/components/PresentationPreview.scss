@@ -1,5 +1,8 @@
 .view-presentation {
 	padding: 0 0 2rem;
+	@media (max-width: 600px) {
+		padding: 1rem 0 2rem;
+	}
 
 	#spinner-parent {
 		text-align: center;
