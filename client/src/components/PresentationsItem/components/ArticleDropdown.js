@@ -3,7 +3,7 @@ import "./ArticleDropdown.scss";
 
 const ArticleDropdown = ({ articles }) => {
   return (
-    <div className="dropdown presentation__item presentation__item__article">
+    <div className="dropdown presentation__item article">
       <button
         className=" btn btn-light dropdown-toggle"
         type="button"

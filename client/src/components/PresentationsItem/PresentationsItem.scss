@@ -7,199 +7,163 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 1200px) {
+        flex-wrap: wrap;
+    }
 
     &__item {
         text-align: left;
         padding: 0 .5rem;
-
-        &__presenter {
-            width: 15%;
-            padding-left: 0;
-        }
-
-        &__evaluator {
-            width: 15%;
-        }
-
-        &__topic {
-            width: 29%;
-        }
-
-        &__date {
-            width: 8rem;
-        }
-
-        &__article {
-            width: 9.5rem;
-
-            .btn {
-                border: none;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-
-                .badge {
-                    margin-top: 2px;
-                }
-            }
-        }
-
-        &__buttons {
-            width: 9.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding-right: 0;
-        }
-
-        &__modify {
-            width: 9.5rem;
-        }
-
-    }
-   
-}
-
-@media only screen and (max-width : 1200px){
-    .presentation {
-        flex-wrap: wrap;
-
-        &__item {
+        @media (max-width: 1200px) {
             height: 4rem;
-
-            &__article {
-                padding-right: 0;
-            }
-
-            &__buttons {
-                margin-left: 83%;
-                height: 2.5rem;
-                padding: 0;
-            }
-
-            &__modify {
-                display: none;
-            }
         }
-    }
-    .bold-text {
-        height: 3rem;
-    }
-}
-
-@media only screen and (max-width : 992px){
-    .presentation {
-
-        &__item {
+        @media (max-width: 992px) {
             align-items: center;
             margin-bottom: 1rem;
-
-            &__date {
-                width: 9.5rem;
-            }
-
-            &__article {
-                padding: 0;
-                width: 100%;
-                align-items: center;
-                height: 2rem;
-            }
-
-            &__buttons {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                align-items: center;
-                justify-content: flex-end;
-
-                .btn-danger {
-                    margin-left: .5rem;
-                }
-            }
-
-            &__topic {
-               overflow: hidden; 
-               width: 40%;
-            }
-
         }
-     
-    }
-    
-    .bold-text {
-
-        .presentation {
-
-            &__item {
-                &__article {
-                    display: none;
-                }
-            }   
-        }
-    }
-}
-
-@media only screen and (max-width : 760px){
-    .presentation {
-
-        &__item {
+        @media (max-width: 760px) {
             width: 9.5rem;
             align-items: center;
             margin-bottom: 0.5rem;
             height: 2.5rem;
             padding: 0;
-
-            &__presenter {
-                font-weight: bold;
-            }
-
-            &__topic {
-                width: 100%;
-            }
-
-            &__buttons {
-                width: 100%;
-                justify-content: flex-start;
-                
-
-            }
+        }
+        @media (max-width: 600px) {
+            width: 100%;
         }
     }
 
-    .bold-text {
-        display: none;
+    .presenter {
+        width: 15%;
+        padding-left: 0;
+        @media (max-width: 760px) {
+            font-weight: bold;
+        }
+        @media (max-width: 600px) {
+            height: 1.5rem;
+            width: 100%;
+        }
     }
 
-}
+    .evaluator {
+        width: 15%;
+        @media (max-width: 600px) {
+            height: 1.5rem;
+            width: 100%;
+        }
+    }
 
-@media only screen and (max-width : 600px){
-    .presentation {
+    .topic {
+        width: 29%;
+        @media (max-width: 992px) {
+            overflow: hidden;
+            width: 40%;
+        }
+        @media (max-width: 760px) {
+            width: 100%;
+        }
+        @media (max-width: 600px) {
+            height: 3.5rem;
+            font-size: 1.2rem;
+        }
+    }
 
-        &__item {
+    .date {
+        width: 8rem;
+        @media (max-width: 992px) {
+            width: 9.5rem;
+        }
+        @media (max-width: 600px) {
+            height: 1.5rem;
+        }
+    }
+
+    .article {
+        width: 9.5rem;
+        @media (max-width: 1200px) {
+            padding-right: 0;
+        }
+        @media (max-width: 992px) {
+            padding: 0;
+            width: 100%;
+            align-items: center;
+            height: 2rem;
+        }
+        @media (max-width: 600px) {
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
 
-            &__presenter, &__evaluator, &__date  {
-                height: 1.5rem;
-            }
-
-            &__topic {
-                height: 3.5rem;
-            }
-
-            &__buttons {
-                justify-content: space-between;
-
-                .btn-primary {
-                    width: 4.6rem;
-                }
+            .badge {
+                margin-top: 2px;
             }
         }
-    
     }
 
-    .bold-text {
+    .buttons {
+        width: 9.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-right: 0;
+        @media (max-width: 1200px) {
+            margin-left: 83%;
+            height: 2.5rem;
+            padding: 0;
+        }
+        @media (max-width: 992px) {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        @media (max-width: 760px) {
+            width: 100%;
+            justify-content: flex-start;
+        }
+        @media (max-width: 600px) {
+            justify-content: space-between;
+            margin-bottom: .5rem;
+        }
+
+        .btn-danger {
+            @media (max-width: 992px) {
+                margin-left: .5rem;
+            }
+        }
+
+        .btn-primary {
+            @media (max-width: 600px) {
+                width: 4.6rem;
+            }
+        }
+    }
+
+    .modify {
+        width: 9.5rem;
+        @media (max-width: 1200px) {
+            display: none;
+        }
+    }
+}
+
+.bold-text {
+    height: 3rem;
+    @media (max-width: 760px) {
         display: none;
+    }
+
+    .article {
+        @media (max-width: 992px) {
+            display: none;
+        }
     }
 
 }

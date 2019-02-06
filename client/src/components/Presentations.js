@@ -32,14 +32,16 @@ const Presentations = ({
   return (
     <div className="container presentations-container">
       <ul className="list-group list-group-flush presentation-list">
-        <PresentationsItem
-          presentation={{
-            presenter: "Presenter",
-            evaluator: "Evaluator",
-            topic: "Topic",
-            date: "Date"
-          }}
-        />
+        <li className="list-group-item bold-text">
+          <div className="presentation">
+            <span className="presentation__item presenter">Presenter</span>
+            <span className="presentation__item evaluator">Evaluator</span>
+            <span className="presentation__item topic">Topic</span>
+            <span className="presentation__item date">Date</span>
+            <span className="presentation__item article">Article</span>
+            <span className="presentation__item modify">Modify</span>
+          </div>
+        </li>
         {presentationsList}
       </ul>
     </div>
