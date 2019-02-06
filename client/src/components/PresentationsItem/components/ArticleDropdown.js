@@ -11,6 +11,7 @@ const ArticleDropdown = ({ articles }) => {
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
+        data-display="static"
       >
         <span className="badge badge-secondary badge-pill">
           {articles.length}
@@ -18,7 +19,10 @@ const ArticleDropdown = ({ articles }) => {
         Articles
       </button>
 
-      <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <div
+        className="dropdown-menu dropdown-menu-lg-right"
+        aria-labelledby="dropdownMenuButton"
+      >
         {articles.map((article, i) => (
           <a
             className="dropdown-item"
@@ -26,6 +30,7 @@ const ArticleDropdown = ({ articles }) => {
             target="blank"
             key={i + "item"}
           >
+            {/* {window.size > 600 ? article : `${article.slice(0, 34)}...`} */}
             {article}
           </a>
         ))}
