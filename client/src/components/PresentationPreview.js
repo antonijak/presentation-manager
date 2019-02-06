@@ -15,7 +15,7 @@ const ViewPresentation = ({
     : null;
 
   return (
-    <div className="container view-presentation">
+    <div className="view-presentation">
       <Link
         to="/presentations"
         className="btn btn-outline-primary view-presentation__back-btn"
