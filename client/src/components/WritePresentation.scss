@@ -1,8 +1,13 @@
 .write-presentations {
-
 	&__button-container {
 		border-bottom: 1px solid rgb(235, 233, 233);
-		padding: 1rem
+		padding: 1rem;
+		
+		&__back-btn {
+			@media (max-width : 600px) {
+				margin: 0 0 1rem;
+			}
+		}
 	}
 
 	&__title {
@@ -24,21 +29,11 @@
 				max-width: 100%;
 				overflow: hidden;
 			}
-
 		}
 
 		.form__submit {
 			margin: 1rem 0;
 		}
 	}
-
 }
 
-@media only screen and (max-width : 600px){
-	.write-presentations {
-
-		&__back-btn {
-			margin: 0 0 1rem;
-		}
-	}
-}

@@ -1,5 +1,5 @@
 .view-presentation {
-	padding: 0;
+	padding: 0 0 2rem;
 
 	#spinner-parent {
 		text-align: center;
@@ -9,82 +9,96 @@
 	&__back-btn {
 		margin-top: 1rem;
 		margin-left: 1rem;
+		@media (max-width: 600px) {
+			margin-left: 0;
+		}
 	}
-	
-	&__name {
-			width: 100%;
-			padding: 1rem;
-			margin-top: 1rem;
-			border-top: 1px solid rgb(235, 233, 233);
+
+	&__topic {
+		width: 100%;
+		padding: 1rem;
+		margin-top: 1rem;
+		border-top: 1px solid rgb(235, 233, 233);
+		@media (max-width: 600px) {
+			padding: 1rem 0;
+			font-size: 1.7rem;
+		}
 	}
 
 	&__buttons {
 		margin-top: 2rem;
 		padding-left: 1rem;
-		 .btn {
-			 margin-right: 1rem;
-		 }
+		@media (max-width: 600px) {
+			padding: 0;
+		}
+
+		.btn {
+			margin-right: 1rem;
+		}
 	}
 
 	.row {
 		margin: .5rem 0;
 		padding-left: 1rem;
+		@media (max-width: 600px) {
+			padding: 0;
+		}
 
 		.col-2 {
 			padding-left: 0;
+			@media (max-width: 600px) {
+				min-width: 40%;
+				padding: 0;
+				color: rgb(154, 154, 154);
+				padding: 0;
+			}
+		}
+
+		.col-10 {
+			@media (max-width: 600px) {
+				padding: 0;
+			}
 		}
 
 		&__articles {
 			display: flex;
 			flex-direction: column;
-		}
-	
-		&__keywords {
-			
-			.badge{
-				margin-right: .5rem;
-				font-size: .9rem;
+			@media (max-width: 600px) {
+				width: 100%;
+				overflow: scroll;
+				min-width: 100%;
+				padding: 0;
 			}
-		}
-	}	
-}
-
-@media only screen and (max-width : 600px){
-
-	.row {
-		.col-2 {
-			min-width: 40%;
-			padding: 0;
-			color: rgb(154, 154, 154);
-			padding: 0;
-		}
-
-		.col-10 {
-			padding: 0;
-		}
-
-		&__articles {
-			width: 100%;
-			overflow: scroll;
-			min-width: 100%;
-			padding: 0;
 
 			&::-webkit-scrollbar {
-				width: 3px;
+				@media (max-width: 600px) {
+					width: 3px;
+				}
 			}
 
 			&::-webkit-scrollbar-track-piece {
-				background: white;
+				@media (max-width: 600px) {
+					background: white;
+				}
 			}
-
 
 			&::-webkit-scrollbar-thumb {
-				background: rgb(179, 177, 177); 
+				@media (max-width: 600px) {
+					background: rgb(179, 177, 177);
+				}
 			}
 
-
 			.article-link {
-				margin-bottom: .5rem;
+				@media (max-width: 600px) {
+					margin-bottom: .5rem;
+				}
+			}
+		}
+
+		&__keywords {
+			.badge {
+				margin-right: .5rem;
+				font-size: .9rem;
 			}
 		}
 	}

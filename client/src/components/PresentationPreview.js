@@ -33,7 +33,7 @@ const ViewPresentation = ({
         </div>
       ) : (
         <>
-          <h2 className="view-presentation__name">{presentation.topic}</h2>
+          <h2 className="view-presentation__topic">{presentation.topic}</h2>
 
           <div className="row view-presentation__presenter">
             <div className="col-2">Presenter:</div>
