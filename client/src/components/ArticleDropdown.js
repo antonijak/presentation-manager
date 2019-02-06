@@ -30,7 +30,6 @@ const ArticleDropdown = ({ articles }) => {
             target="blank"
             key={i + "item"}
           >
-            {/* {window.size > 600 ? article : `${article.slice(0, 34)}...`} */}
             {article}
           </a>
         ))}

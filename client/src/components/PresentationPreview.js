@@ -1,7 +1,7 @@
 import React from "react";
-import Buttons from "./Buttons";
-import "./ViewPresentation.scss";
 import { Link } from "react-router-dom";
+import Buttons from "./Buttons";
+import "./PresentationPreview.scss";
 
 const ViewPresentation = ({
   presentations,

@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import ArticleDropdown from "./ArticleDropdown";
+import Buttons from "./Buttons";
+
 import "./PresentationsItem.scss";
-import ArticleDropdown from "./components/ArticleDropdown";
-import Buttons from "../Buttons";
 
 const PresentationsItem = ({
   presentation,
-  variant,
   history,
   editNewPresentation,
   handleDelete

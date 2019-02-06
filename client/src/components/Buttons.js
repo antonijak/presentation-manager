@@ -1,13 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Buttons = ({
-  presentation,
-  className,
-  history,
-  editNewPresentation,
-  handleDelete
-}) => {
+const Buttons = ({ presentation, className, history, handleDelete }) => {
   return (
     <div className={className}>
       <Link
