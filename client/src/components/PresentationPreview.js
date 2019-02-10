@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import dateFormatter from "../assets/dateFormatter";
 import Buttons from "./Buttons";
 import "./PresentationPreview.scss";
 
@@ -47,7 +48,7 @@ const ViewPresentation = ({
 
           <div className="row">
             <div className="col-2">Date:</div>
-            <div className="col-10">{presentation.date.substring(0, 10)}</div>
+            <div className="col-10">{dateFormatter(presentation.date)}</div>
           </div>
 
           <div className="row">

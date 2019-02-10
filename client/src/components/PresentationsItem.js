@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import dateFormatter from "../assets/dateFormatter";
 
 import ArticleDropdown from "./ArticleDropdown";
 import Buttons from "./Buttons";
@@ -29,7 +30,7 @@ const PresentationsItem = ({
       </span>
 
       <span className="presentation__item date">
-        {presentation.date.substring(0, 10)}
+        {dateFormatter(presentation.date)}
       </span>
 
       <ArticleDropdown articles={presentation.articles} />
