@@ -7,7 +7,7 @@ import Home from "./components/Home";
 import WritePresentation from "./components/WritePresentation";
 import Presentations from "./components/Presentations";
 import PresentationPreview from "./components/PresentationPreview";
-import Header from "./components/Header";
+import NavBar from "./components/NavBar";
 
 import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -38,7 +38,7 @@ class App extends Component {
   render() {
     return (
       <div className="App container" id="main-container">
-        <Header />
+        <NavBar />
 
         <Switch>
           <Route

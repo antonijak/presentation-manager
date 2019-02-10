@@ -10,14 +10,14 @@ const Presentations = ({
 }) => (
   <div className="container presentations-container">
     <ul className="list-group list-group-flush presentation-list">
-      <li className="list-group-item bold-text">
-        <div className="presentation">
-          <span className="presentation__item presenter">Presenter</span>
-          <span className="presentation__item evaluator">Evaluator</span>
-          <span className="presentation__item topic">Topic</span>
-          <span className="presentation__item date">Date</span>
-          <span className="presentation__item article">Article</span>
-          <span className="presentation__item modify">Modify</span>
+      <li className="list-group-item headings">
+        <div className="presentation bold-text">
+          <h6 className="presentation__item presenter">Presenter</h6>
+          <h6 className="presentation__item evaluator">Evaluator</h6>
+          <h6 className="presentation__item topic">Topic</h6>
+          <h6 className="presentation__item date">Date</h6>
+          <h6 className="presentation__item article">Article</h6>
+          <h6 className="presentation__item modify">Modify</h6>
         </div>
       </li>
       {presentations ? (

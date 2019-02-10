@@ -28,9 +28,7 @@ const ViewPresentation = ({
 
       {!presentation ? (
         <div className="container" id="spinner-parent">
-          <div className="spinner-border mt-4" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
+          <div className="spinner-border mt-4" role="status" />
         </div>
       ) : (
         <>

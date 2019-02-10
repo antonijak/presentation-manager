@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const NavBar = () => {
   return (
     <nav className="navbar navbar-dark bg-secondary navbar-expand-md">
       <Link to="/" className="navbar-brand">
@@ -32,4 +32,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default NavBar;

@@ -15,23 +15,19 @@ const PresentationsItem = ({
 }) => (
   <li className="list-group-item">
     <div className="presentation">
-      <span className="presentation__item presenter">
-        {presentation.presenter}
-      </span>
+      <p className="presentation__item presenter">{presentation.presenter}</p>
 
-      <span className="presentation__item evaluator">
-        {presentation.evaluator}
-      </span>
+      <p className="presentation__item evaluator">{presentation.evaluator}</p>
 
-      <span className="presentation__item topic">
+      <p className="presentation__item topic">
         <Link to={"/presentations/" + presentation._id}>
           {presentation.topic}
         </Link>
-      </span>
+      </p>
 
-      <span className="presentation__item date">
+      <p className="presentation__item date">
         {dateFormatter(presentation.date)}
-      </span>
+      </p>
 
       <ArticleDropdown articles={presentation.articles} />
 

@@ -3,7 +3,6 @@
     overflow: hidden;
     min-height: 100vh;
     padding-bottom: 6rem;
-   
 
     &.container { 
         @media (max-width: 992px) {
@@ -19,6 +18,32 @@
             padding: 0;
             padding-bottom: 8rem;
         } 
+    }
+
+    .headings {
+        @media (max-width: 768px) {
+            display: none;
+            height: 0;
+            padding: 0;
+        }
+        
+        .bold-text {
+            & > * {
+            font-weight: bold;
+            margin-bottom: 0;
+            height: fit-content;
+                @media (max-width: 768px) {
+                    display: none;
+                    padding: 0;
+                }
+            }
+            
+            .article {
+                @media (max-width: 992px) {
+                    display: none;
+                }
+            }
+        }
     }
 
     #spinner-parent {
