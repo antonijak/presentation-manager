@@ -15,5 +15,3 @@ Created using React, Redux, Node, MongoDB...
 - and just to get familiar:
     * Bootstrap
     * Sass
-    * BEM naming style
-    * classNames

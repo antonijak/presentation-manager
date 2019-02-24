@@ -1,16 +1,18 @@
 import React, { Component } from "react";
-import "./App.css";
 import { Route, Switch, withRouter } from "react-router-dom";
-import * as actions from "./actions/actions";
+import * as actions from "./store/actions/actions";
 import { connect } from "react-redux";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import Home from "./components/Home";
 import WritePresentation from "./components/WritePresentation";
 import Presentations from "./components/Presentations";
-import ViewPresentation from "./components/ViewPresentation";
-import Header from "./components/Header";
 import SignUp from "./components/SignUp/index";
 import LogIn from "./components/LogIn/index";
+import PresentationPreview from "./components/PresentationPreview";
+import NavBar from "./components/NavBar";
+
+import "./App.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   componentDidMount = () => {
@@ -38,7 +40,7 @@ class App extends Component {
   render() {
     return (
       <div className="App container" id="main-container">
-        <Header />
+        <NavBar />
 
         <Switch>
           <Route
@@ -74,7 +76,7 @@ class App extends Component {
             exact
             path="/presentations/:_id"
             render={props => (
-              <ViewPresentation
+              <PresentationPreview
                 {...props}
                 presentations={this.props.presentations}
                 editNewPresentation={this.editNewPresentation}

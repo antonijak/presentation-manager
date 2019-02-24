@@ -3,7 +3,7 @@ import "./ArticleDropdown.scss";
 
 const ArticleDropdown = ({ articles }) => {
   return (
-    <div className="dropdown presentation__item presentation__item__article">
+    <div className="dropdown presentation__item article">
       <button
         className=" btn btn-light dropdown-toggle"
         type="button"
@@ -11,6 +11,7 @@ const ArticleDropdown = ({ articles }) => {
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
+        data-display="static"
       >
         <span className="badge badge-secondary badge-pill">
           {articles.length}
@@ -18,7 +19,10 @@ const ArticleDropdown = ({ articles }) => {
         Articles
       </button>
 
-      <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <div
+        className="dropdown-menu dropdown-menu-lg-right"
+        aria-labelledby="dropdownMenuButton"
+      >
         {articles.map((article, i) => (
           <a
             className="dropdown-item"

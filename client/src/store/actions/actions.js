@@ -1,6 +1,18 @@
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
 
+export function getAllPresentations() {
+  const data = axios.get("/allpresentations");
+  return dispatch => {
+    data.then(data => {
+      dispatch({
+        type: actionTypes.GET_ALL_PRESENTATIONS,
+        payload: data
+      });
+    });
+  };
+}
+
 export function addPresentation(presentation) {
   const data = axios({
     method: "post",
@@ -43,18 +55,6 @@ export function deletePresentation(_id) {
     data.then(data => {
       dispatch({
         type: actionTypes.DELETE_PRESENTATION,
-        payload: data
-      });
-    });
-  };
-}
-
-export function getAllPresentations() {
-  const data = axios.get("/allpresentations");
-  return dispatch => {
-    data.then(data => {
-      dispatch({
-        type: actionTypes.GET_ALL_PRESENTATIONS,
         payload: data
       });
     });
