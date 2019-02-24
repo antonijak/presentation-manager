@@ -12,8 +12,9 @@ function giveNum(arr) {
 
 class Presentations extends Component {
   state = {
-    pages: this.props.presentations && this.props.presentations.slice(0, 8)
+    pages: this.props.presentations.slice(0, 8)
   };
+
   render() {
     return (
       <div className="container presentations-container">
@@ -49,21 +50,23 @@ class Presentations extends Component {
           )}
         </ul>
 
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            {giveNum(this.props.presentations).map((item, i) => (
-              <li className="page-item">
-                <button
-                  onClick={() => {
-                    this.setState({
-                      pages: this.props.presentations.slice(item, item + 8)
-                    });
-                  }}
-                >
-                  {i + 1}
-                </button>
-              </li>
-            ))}
+        <nav aria-label="Page navigation" className="presentations__pagination">
+          <ul className="pagination">
+            {this.props.presentations &&
+              giveNum(this.props.presentations).map((item, i) => (
+                <li className="page-item">
+                  <button
+                    className="page-link"
+                    onClick={() => {
+                      this.setState({
+                        pages: this.props.presentations.slice(item, item + 8)
+                      });
+                    }}
+                  >
+                    {i + 1}
+                  </button>
+                </li>
+              ))}
           </ul>
         </nav>
       </div>

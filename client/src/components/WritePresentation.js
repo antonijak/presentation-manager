@@ -151,7 +151,7 @@ class WritePresentation extends Component {
         this.state.newPresentation.articles.every(
           article =>
             article.length > 5 &&
-            /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/.test(
+            /^(?:http(s)?:\/\/)[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/.test(
               article
             )
         )
