@@ -18,6 +18,12 @@
 	&__form {
 		padding: 1rem;
 
+		.form-group {
+			&__date {
+				width: 11rem;
+			}
+		}
+
 		.pills-container {
 			margin-top: 1rem;
 
@@ -31,9 +37,36 @@
 			}
 		}
 
-		.form__submit {
-			margin: 1rem 0;
+
+		small {
+			margin-left: .5rem;
+			display: inline-block;
+			color: rgb(250, 65, 65);
 		}
+
+		.submit-container {
+			margin: 1rem 0;
+			display: flex;
+			flex-direction: column;
+			width: fit-content;
+			.message-none {
+				display: none;
+			}
+
+			.message-block{
+				display: block;
+				color: rgb(250, 65, 65);
+				margin-bottom: .5rem;
+				margin-left: 0;
+			}
+
+			.form__submit {
+				width: fit-content;
+				
+			}
+		}
+
+		
 	}
 }
 
