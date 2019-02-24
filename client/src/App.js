@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
-import * as actions from "./actions/actions";
+import * as actions from "./store/actions/actions";
 import { connect } from "react-redux";
 
 import Home from "./components/Home";
