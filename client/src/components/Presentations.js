@@ -2,9 +2,17 @@ import React, { Component } from "react";
 import PresentationsItem from "./PresentationsItem";
 import "./Presentations.scss";
 
+function giveNum(arr) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i += 8) {
+    newArr.push(i);
+  }
+  return newArr;
+}
+
 class Presentations extends Component {
   state = {
-    pages: this.props.presentations && this.props.presentations.slice(0, 4)
+    pages: this.props.presentations && this.props.presentations.slice(0, 8)
   };
   render() {
     return (
@@ -43,61 +51,19 @@ class Presentations extends Component {
 
         <nav aria-label="Page navigation example">
           <ul class="pagination">
-            <li class="page-item">
-              <button
-                onClick={() => {
-                  this.setState({
-                    pages: this.props.presentations.slice(4, 8)
-                  });
-                }}
-              >
-                Previous
-              </button>
-            </li>
-            <li class="page-item">
-              <button
-                onClick={() => {
-                  this.setState({
-                    pages: this.props.presentations.slice(4, 8)
-                  });
-                }}
-              >
-                1
-              </button>
-            </li>
-            <li class="page-item">
-              <button
-                onClick={() => {
-                  this.setState({
-                    pages: this.props.presentations.slice(4, 8)
-                  });
-                }}
-              >
-                2
-              </button>
-            </li>
-            <li class="page-item">
-              <button
-                onClick={() => {
-                  this.setState({
-                    pages: this.props.presentations.slice(4, 8)
-                  });
-                }}
-              >
-                3
-              </button>
-            </li>
-            <li class="page-item">
-              <button
-                onClick={() => {
-                  this.setState({
-                    pages: this.props.presentations.slice(4, 8)
-                  });
-                }}
-              >
-                Previous
-              </button>
-            </li>
+            {giveNum(this.props.presentations).map((item, i) => (
+              <li className="page-item">
+                <button
+                  onClick={() => {
+                    this.setState({
+                      pages: this.props.presentations.slice(item, item + 8)
+                    });
+                  }}
+                >
+                  {i + 1}
+                </button>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
