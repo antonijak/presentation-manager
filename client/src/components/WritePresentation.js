@@ -265,14 +265,12 @@ class WritePresentation extends Component {
     return (
       <div className="write-presentations">
         <div className="write-presentations__button-container">
-          <Link
-            to="/presentations"
+          <button
             className="btn btn-outline-primary button-container__back-btn"
-            tabIndex="-1"
-            role="button"
+            onClick={() => this.props.history.goBack()}
           >
             Back
-          </Link>
+          </button>
         </div>
 
         <h2 className="write-presentations__title">
