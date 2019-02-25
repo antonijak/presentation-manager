@@ -4,11 +4,7 @@ import { givePageBreaks } from "../assets/HelperFunctions";
 import "./Presentations.scss";
 
 class Presentations extends Component {
-  state = {
-    render: false,
-    a: 0,
-    b: 7
-  };
+  state = { sliceFirst: 0, sliceSecond: 7 };
   render() {
     return (
       <div className="container presentations-container">
@@ -25,8 +21,7 @@ class Presentations extends Component {
           </li>
           {this.props.presentations ? (
             this.props
-              .getPages(this.state.a, this.state.b)
-              .sort((a, b) => a.date.localeCompare(b.date))
+              .getPages(this.state.sliceFirst, this.state.sliceSecond)
               .map((presentation, i) => (
                 <PresentationsItem
                   presentation={presentation}
@@ -54,8 +49,8 @@ class Presentations extends Component {
                     className="page-link"
                     onClick={() => {
                       this.setState({
-                        a: item,
-                        b: item + 7
+                        sliceFirst: item,
+                        sliceSecond: item + 7
                       });
                     }}
                   >

@@ -14,7 +14,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   state = { added: false, deleted: false, edited: false };
-  getPages = (a, b) => this.props.presentations.slice(a, b);
+  getPages = (a, b) =>
+    this.props.presentations
+      .sort((a, b) => a.date.localeCompare(b.date))
+      .slice(a, b);
 
   componentDidMount = () => {
     this.props.getAllPresentations();
