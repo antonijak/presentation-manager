@@ -16,7 +16,7 @@ class App extends Component {
   state = { added: false, deleted: false, edited: false };
   getPages = (a, b) =>
     this.props.presentations
-      .sort((a, b) => a.date.localeCompare(b.date))
+      .sort((a, b) => b.date.localeCompare(a.date))
       .slice(a, b);
 
   componentDidMount = () => {

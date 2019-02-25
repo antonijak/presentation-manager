@@ -7,7 +7,22 @@ class Presentations extends Component {
   state = { sliceFirst: 0, sliceSecond: 7 };
   render() {
     return (
-      <div className="container presentations-container">
+      <div className="container presentations-container" id="main-con">
+        {this.props.added && (
+          <div class="alert alert-success" role="alert" id="alert">
+            Presentation added!
+          </div>
+        )}
+        {this.props.deleted && (
+          <div class="alert alert-success" role="alert" id="alert">
+            Presentation deleted!
+          </div>
+        )}
+        {this.props.edited && (
+          <div class="alert alert-success" role="alert" id="alert">
+            Presentation updated
+          </div>
+        )}
         <ul className="list-group list-group-flush presentation-list">
           <li className="list-group-item headings">
             <div className="presentation bold-text">
@@ -44,9 +59,10 @@ class Presentations extends Component {
           <ul className="pagination">
             {this.props.presentations &&
               givePageBreaks(this.props.presentations, 7).map((item, i) => (
-                <li className="page-item">
+                <li className="page-item" id="pag">
                   <button
                     className="page-link"
+                    id="pag"
                     onClick={() => {
                       this.setState({
                         sliceFirst: item,
@@ -60,21 +76,6 @@ class Presentations extends Component {
               ))}
           </ul>
         </nav>
-        {this.props.added && (
-          <div class="alert alert-success" role="alert">
-            Presentation added!
-          </div>
-        )}
-        {this.props.deleted && (
-          <div class="alert alert-success" role="alert">
-            Presentation deleted!
-          </div>
-        )}
-        {this.props.edited && (
-          <div class="alert alert-success" role="alert">
-            Presentation updated
-          </div>
-        )}
       </div>
     );
   }

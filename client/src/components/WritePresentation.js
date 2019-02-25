@@ -112,17 +112,17 @@ class WritePresentation extends Component {
     switch (name) {
       case "presenter" || "evaluator":
         this.setMessage(
-          value.length >= 2,
+          value.length >= 2 && value.length <= 20,
           name,
-          "Must contain more than 2 characters"
+          "Must contain 2-20 characters"
         );
         break;
 
       case "evaluator":
         this.setMessage(
-          value.length >= 2,
+          value.length >= 2 && value.length <= 20,
           name,
-          "Must contain more than 2 characters"
+          "Must contain 2-20 characters"
         );
         break;
 
@@ -169,11 +169,11 @@ class WritePresentation extends Component {
         break;
 
       case "keywords":
-        this.state.newPresentation.keywords.some(article => article.length < 4)
+        this.state.newPresentation.keywords.some(article => article.length < 2)
           ? this.setState({
               messages: {
                 ...this.state.messages,
-                keywords: "All keywords must be at least 4 characters long"
+                keywords: "All keywords must be at least 2 characters long"
               }
             })
           : this.setState({

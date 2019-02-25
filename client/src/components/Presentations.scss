@@ -5,6 +5,7 @@
     padding-bottom: 6rem;
 
     &.container { 
+        position: relative;
         @media (max-width: 992px) {
             min-width: 90%;
         }
@@ -18,6 +19,36 @@
             padding: 0;
             padding-bottom: 8rem;
         } 
+
+        #alert {
+            position: fixed;
+            width: 90%;
+            margin: 0 5%;
+            text-align: center;
+            top: 5vh;
+            left: 0;
+            opacity: 0;
+            animation: fade 2.7s linear both;
+            z-index: 1;
+        }
+        
+        @keyframes fade {
+            0% {
+                opacity: 0;
+            }
+            25% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+            75% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
     }
 
     .headings {
@@ -64,6 +95,7 @@
     }
 }
 
+
 .presentations__pagination {
     display: flex;
     justify-content: center;
@@ -71,7 +103,4 @@
     margin-left: 1.2rem;
 }
 
-.alert-success {
-    width: 50%;
-    float: right;
-}
+
