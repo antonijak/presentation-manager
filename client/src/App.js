@@ -13,25 +13,40 @@ import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
+  state = { added: false, deleted: false, edited: false };
+  getPages = (a, b) => this.props.presentations.slice(a, b);
+
   componentDidMount = () => {
     this.props.getAllPresentations();
   };
 
-  handleSubmit = (event, history, newPresentation) => {
+  handleSubmit = (history, newPresentation) => {
     this.props.addPresentation(newPresentation);
     history.push("/presentations/");
+    this.setState({ added: true });
+    setTimeout(() => {
+      this.setState({ added: false });
+    }, 3000);
   };
 
   handleEdit = (event, _id, history, newPresentation) => {
     event.preventDefault();
     this.props.editPresentation(_id, newPresentation);
     history.push("/presentations/");
+    this.setState({ edited: true });
+    setTimeout(() => {
+      this.setState({ edited: false });
+    }, 3000);
   };
 
   handleDelete = (_id, history) => {
     if (window.confirm("Are you sure you want to delete this presentation?")) {
       this.props.deletePresentation(_id);
       history.push("/presentations");
+      this.setState({ deleted: true });
+      setTimeout(() => {
+        this.setState({ deleted: false });
+      }, 3000);
     }
   };
 
@@ -106,6 +121,10 @@ class App extends Component {
                 presentations={this.props.presentations}
                 editNewPresentation={this.editNewPresentation}
                 handleDelete={this.handleDelete}
+                added={this.state.added}
+                edited={this.state.edited}
+                deleted={this.state.deleted}
+                getPages={this.getPages}
               />
             )}
           />

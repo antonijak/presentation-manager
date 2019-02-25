@@ -16,7 +16,9 @@ const Buttons = ({ presentation, className, history, handleDelete }) => {
       <button
         type="button"
         className="btn btn-danger delete"
-        onClick={() => handleDelete(presentation._id, history)}
+        onClick={() => {
+          handleDelete(presentation._id, history);
+        }}
       >
         Delete
       </button>

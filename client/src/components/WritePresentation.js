@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "./WritePresentation.scss";
 
 class WritePresentation extends Component {
@@ -254,7 +253,6 @@ class WritePresentation extends Component {
       );
     } else {
       return this.props.handleSubmit(
-        e,
         this.props.history,
         this.state.newPresentation
       );

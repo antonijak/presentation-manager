@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import dateFormatter from "../assets/dateFormatter";
+import { dateFormatter } from "../assets/HelperFunctions";
 import Buttons from "./Buttons";
 import "./PresentationPreview.scss";
 

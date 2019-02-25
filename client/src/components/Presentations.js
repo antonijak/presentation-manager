@@ -1,20 +1,14 @@
 import React, { Component } from "react";
 import PresentationsItem from "./PresentationsItem";
+import { givePageBreaks } from "../assets/HelperFunctions";
 import "./Presentations.scss";
-
-function giveNum(arr) {
-  let newArr = [];
-  for (let i = 0; i < arr.length; i += 8) {
-    newArr.push(i);
-  }
-  return newArr;
-}
 
 class Presentations extends Component {
   state = {
-    pages: this.props.presentations.slice(0, 8)
+    render: false,
+    a: 0,
+    b: 7
   };
-
   render() {
     return (
       <div className="container presentations-container">
@@ -30,9 +24,9 @@ class Presentations extends Component {
             </div>
           </li>
           {this.props.presentations ? (
-            this.state.pages
+            this.props
+              .getPages(this.state.a, this.state.b)
               .sort((a, b) => a.date.localeCompare(b.date))
-
               .map((presentation, i) => (
                 <PresentationsItem
                   presentation={presentation}
@@ -41,6 +35,7 @@ class Presentations extends Component {
                   editNewPresentation={this.props.editNewPresentation}
                   handleDelete={this.props.handleDelete}
                   history={this.props.history}
+                  rerender={this.rerender}
                 />
               ))
           ) : (
@@ -53,13 +48,14 @@ class Presentations extends Component {
         <nav aria-label="Page navigation" className="presentations__pagination">
           <ul className="pagination">
             {this.props.presentations &&
-              giveNum(this.props.presentations).map((item, i) => (
+              givePageBreaks(this.props.presentations, 7).map((item, i) => (
                 <li className="page-item">
                   <button
                     className="page-link"
                     onClick={() => {
                       this.setState({
-                        pages: this.props.presentations.slice(item, item + 8)
+                        a: item,
+                        b: item + 7
                       });
                     }}
                   >
@@ -69,6 +65,21 @@ class Presentations extends Component {
               ))}
           </ul>
         </nav>
+        {this.props.added && (
+          <div class="alert alert-success" role="alert">
+            Presentation added!
+          </div>
+        )}
+        {this.props.deleted && (
+          <div class="alert alert-success" role="alert">
+            Presentation deleted!
+          </div>
+        )}
+        {this.props.edited && (
+          <div class="alert alert-success" role="alert">
+            Presentation updated
+          </div>
+        )}
       </div>
     );
   }

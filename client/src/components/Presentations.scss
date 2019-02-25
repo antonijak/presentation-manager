@@ -65,6 +65,13 @@
 }
 
 .presentations__pagination {
+    display: flex;
+    justify-content: center;
     margin-top: 1rem;
     margin-left: 1.2rem;
+}
+
+.alert-success {
+    width: 50%;
+    float: right;
 }
