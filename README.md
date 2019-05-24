@@ -2,21 +2,22 @@
 
 ## Simple app for adding, viewing, editing and deleting student presentations
 
-See [demo](https://presentation-app-integrify.herokuapp.com) 
+See [demo](https://presentation-app-integrify.herokuapp.com)
 (Heroku - allow some loading time)
 
 ## Implemented with MERN stack
 
 ### Frontend
-- CRUD functionalities with React & Redux
+
+- CRUD functionalities with React and Redux
 - consistent design with Bootstrap
 
 ### Backend
 
-- create Presentation REST API endpoints with Express & Node
+- create REST API endpoints with Express and Node
 - model the data with Mongoose
 - manage data in the cloud with MongoDB Atlas
-- deploy in Heroku
+- deploy on Heroku
 
 ## Getting started
 
@@ -26,4 +27,4 @@ See [demo](https://presentation-app-integrify.herokuapp.com)
 
 `$ yarn install`
 
-`$ yarn run dev`
+`$ yarn run dev`
