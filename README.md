@@ -1,17 +1,29 @@
-# Presentation App
+# Presentation Manager
 
-### Simple CMS for adding, viewing, editing and deleting student presentations 
+## Simple app for adding, viewing, editing and deleting student presentations
 
-See [demo](https://presentation-app-integrify.herokuapp.com) (Heroku - allow some loading time)
+See [demo](https://presentation-app-integrify.herokuapp.com) 
+(Heroku - allow some loading time)
 
-Created using React, Redux, Node, MongoDB...
+## Implemented with MERN stack
 
-- I used several technologies and principles that are new to me:
-    * Node
-    * Express
-    * MongoDB
-    * Mongoose
+#Frontend
+- CRUD functionalities with React & Redux
+- consistent design with Bootstrap
 
-- and just to get familiar:
-    * Bootstrap
-    * Sass
+#Backend
+
+- create Presentation REST API endpoints with Express & Node
+- model the data with Mongoose
+- manage data in the cloud with MongoDB Atlas
+- deploy in Heroku
+
+## Getting started
+
+`$ git clone https://github.com/antonijak/presentation-manager.git`
+
+`$ cd presentation_manager`
+
+`$ yarn install`
+
+`$ yarn run dev`
