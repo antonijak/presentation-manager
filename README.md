@@ -7,11 +7,11 @@ See [demo](https://presentation-app-integrify.herokuapp.com)
 
 ## Implemented with MERN stack
 
-# Frontend
+### Frontend
 - CRUD functionalities with React & Redux
 - consistent design with Bootstrap
 
-# Backend
+### Backend
 
 - create Presentation REST API endpoints with Express & Node
 - model the data with Mongoose
