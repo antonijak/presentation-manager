@@ -89,6 +89,7 @@ class WritePresentation extends Component {
     }
   };
 
+  // show validation message
   setMessage = (bool, name, message) => {
     bool
       ? this.setState({
@@ -150,7 +151,7 @@ class WritePresentation extends Component {
         this.state.newPresentation.articles.every(
           article =>
             article.length > 5 &&
-            /^(?:http(s)?:\/\/)[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/.test(
+            /^(?:http(s)?:\/\/)[\w.-]+(?:.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/.test(
               article
             )
         )
@@ -169,6 +170,7 @@ class WritePresentation extends Component {
         break;
 
       case "keywords":
+        //check if keyword is shorter than two letters
         this.state.newPresentation.keywords.some(article => article.length < 2)
           ? this.setState({
               messages: {
@@ -195,6 +197,7 @@ class WritePresentation extends Component {
   };
 
   validateForm = () => {
+    // check if all fields have been touched and there are no validation messages (which mean they are all valid)
     if (
       Object.values(this.state.touched).every(item => item === true) &&
       Object.values(this.state.messages).every(item => item === "") &&
@@ -209,7 +212,8 @@ class WritePresentation extends Component {
   handleChange = event => {
     const value = event.target.value.toString();
     const name = event.target.name;
-
+    // if the field name is articles or keywords split the inputed string
+    // into array of articles or keywords and set the state
     if (name === "articles") {
       this.setState({
         newPresentation: {
@@ -244,6 +248,7 @@ class WritePresentation extends Component {
   };
 
   addOrEdit = e => {
+    // give form appropriate submit function weather is is adding or editing
     if (this.props.presentations) {
       return this.props.handleEdit(
         e,
@@ -272,7 +277,9 @@ class WritePresentation extends Component {
         </div>
 
         <h2 className="write-presentations__title">
-          {this.state.topic ? this.state.topic : "New Presentation"}
+          {this.state.newPresentation.topic
+            ? this.state.newPresentation.topic
+            : "New Presentation"}
         </h2>
 
         <form onSubmit={this.addOrEdit} className="write-presentations__form">

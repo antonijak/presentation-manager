@@ -9,17 +9,17 @@ class Presentations extends Component {
     return (
       <div className="container presentations-container" id="main-con">
         {this.props.added && (
-          <div class="alert alert-success" role="alert" id="alert">
+          <div className="alert alert-success" role="alert" id="alert">
             Presentation added!
           </div>
         )}
         {this.props.deleted && (
-          <div class="alert alert-success" role="alert" id="alert">
+          <div className="alert alert-success" role="alert" id="alert">
             Presentation deleted!
           </div>
         )}
         {this.props.edited && (
-          <div class="alert alert-success" role="alert" id="alert">
+          <div className="alert alert-success" role="alert" id="alert">
             Presentation updated
           </div>
         )}
@@ -59,7 +59,7 @@ class Presentations extends Component {
           <ul className="pagination">
             {this.props.presentations &&
               givePageBreaks(this.props.presentations, 7).map((item, i) => (
-                <li className="page-item" id="pag">
+                <li className="page-item" id="pag" key={i + 1}>
                   <button
                     className="page-link"
                     id="pag"

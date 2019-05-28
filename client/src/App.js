@@ -14,18 +14,23 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   state = { added: false, deleted: false, edited: false };
-  getPages = (a, b) =>
-    this.props.presentations
-      .sort((a, b) => b.date.localeCompare(a.date))
-      .slice(a, b);
 
   componentDidMount = () => {
     this.props.getAllPresentations();
   };
 
+  getPages = (a, b) =>
+    //pagination
+    this.props.presentations
+      .sort((a, b) => b.date.localeCompare(a.date))
+      .slice(a, b);
+
   handleSubmit = (history, newPresentation) => {
+    //add presentation
     this.props.addPresentation(newPresentation);
     history.push("/presentations/");
+
+    //display alert for user that presentation was added
     this.setState({ added: true });
     setTimeout(() => {
       this.setState({ added: false });
@@ -34,8 +39,11 @@ class App extends Component {
 
   handleEdit = (event, _id, history, newPresentation) => {
     event.preventDefault();
+
     this.props.editPresentation(_id, newPresentation);
     history.push("/presentations/");
+
+    //display alert for user that presentation was added
     this.setState({ edited: true });
     setTimeout(() => {
       this.setState({ edited: false });
@@ -46,6 +54,8 @@ class App extends Component {
     if (window.confirm("Are you sure you want to delete this presentation?")) {
       this.props.deletePresentation(_id);
       history.push("/presentations");
+
+      //display alert for user that presentation was deleted
       this.setState({ deleted: true });
       setTimeout(() => {
         this.setState({ deleted: false });
